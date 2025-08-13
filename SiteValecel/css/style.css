@@ -2,6 +2,9 @@
   margin: 0;
   padding: 0;
   border: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;
 }
 
 /* Azul escuro quase preto */
@@ -62,6 +65,12 @@
 .logo-mobile {
   width: 60%;
 }
+.btn-more {
+  background: none !important;
+  background-color: transparent !important;
+  border: 1px solid #1d2d44;
+  color: #1d2d44;
+}
 
 .text-navigation {
   font-size: 20px;
@@ -69,4 +78,52 @@
   border-bottom: 2px solid #f0ebd8; /* Cor da linha */
   padding-bottom: 4px; /* Espaço entre texto e linha */
   text-decoration: none;
+}
+/* Container que tem o overflow-x */
+.scroll-container {
+  overflow-x: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: #222 #eee; /* Firefox */
+}
+
+/* Chrome, Safari, Edge */
+.scroll-container::-webkit-scrollbar {
+  height: 6px; /* altura da barra horizontal */
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #eee; /* cor do fundo da barra */
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #222; /* cor da barra */
+  border-radius: 4px;
+  border: 1px solid #eee; /* cria espaço entre a barra e o track */
+}
+
+.spacer {
+  min-width: 100px; /* ou o quanto quiser de espaço */
+}
+
+.cards-wrapper {
+  margin-bottom: 12px; /* cria espaçamento inferior dos cards */
+  display: flex;
+  gap: 12px; /* se quiser espaçar os cards entre si */
+}
+
+.card-scroll {
+  flex-shrink: 0;
+  min-width: 100%; /* mobile: ocupa toda a tela */
+  max-width: 100%;
+  box-sizing: border-box; /* para garantir que padding e borda não aumentem o tamanho */
+  overflow: hidden; /* evita que elementos filhos ultrapassem */
+  border-radius: 8px; /* opcional para bordas arredondadas */
+}
+
+@media (min-width: 576px) {
+  .card-scroll {
+    min-width: 200px; /* desktop/tablet: largura fixa menor */
+  }
 }
