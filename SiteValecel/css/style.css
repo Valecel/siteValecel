@@ -8,11 +8,23 @@
   overflow-x: hidden;
 }
 
+header,
+header nav {
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding-bottom: 0 !important;
+}
+
 p {
   word-break: break-word;
 }
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #1d2d44;
+}
 
-/* Azul escuro quase preto */
 .bg-color1 {
   background-color: #0d1321 !important;
 }
@@ -32,12 +44,12 @@ p {
 }
 .bg-color2 h2 {
   margin-top: 0;
+  padding-top: 0;
 }
 .border-color2 {
   border-color: #1d2d44 !important;
 }
 
-/* Azul acinzentado */
 .bg-color3 {
   background-color: #3e5c76 !important;
 }
@@ -48,7 +60,6 @@ p {
   border-color: #3e5c76 !important;
 }
 
-/* Azul claro acinzentado */
 .bg-color4 {
   background-color: #748cab !important;
 }
@@ -59,7 +70,6 @@ p {
   border-color: #748cab !important;
 }
 
-/* Bege claro */
 .bg-color5 {
   background-color: #f0ebd8 !important;
 }
@@ -87,47 +97,47 @@ p {
   padding-bottom: 4px;
   text-decoration: none;
 }
-/* Container que tem o overflow-x */
+
 .scroll-container {
   overflow-x: auto;
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: #222 #eee; /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #222 #eee;
 }
 
 /* Chrome, Safari, Edge */
 .scroll-container::-webkit-scrollbar {
-  height: 6px; /* altura da barra horizontal */
+  height: 6px;
   border-radius: 4px;
 }
 
 .scroll-container::-webkit-scrollbar-track {
-  background: #eee; /* cor do fundo da barra */
+  background: #eee;
   border-radius: 4px;
 }
 
 .scroll-container::-webkit-scrollbar-thumb {
-  background-color: #222; /* cor da barra */
+  background-color: #222;
   border-radius: 4px;
-  border: 1px solid #eee; /* cria espaço entre a barra e o track */
+  border: 1px solid #eee;
 }
 
 .spacer {
-  min-width: 100px; /* ou o quanto quiser de espaço */
+  min-width: 100px;
 }
 
 .cards-wrapper {
-  margin-bottom: 12px; /* cria espaçamento inferior dos cards */
+  margin-bottom: 12px;
   display: flex;
-  gap: 12px; /* se quiser espaçar os cards entre si */
+  gap: 12px;
 }
 
 .card-scroll {
   flex-shrink: 0;
-  min-width: 100%; /* mobile: ocupa toda a tela */
+  min-width: 100%;
   max-width: 100%;
-  box-sizing: border-box; /* para garantir que padding e borda não aumentem o tamanho */
-  overflow: hidden; /* evita que elementos filhos ultrapassem */
-  border-radius: 8px; /* opcional para bordas arredondadas */
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 8px;
 }
 
 @media (min-width: 576px) {
