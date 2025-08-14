@@ -5,6 +5,11 @@
   font-family: "Poppins", sans-serif;
   font-weight: 100;
   font-style: normal;
+  overflow-x: hidden;
+}
+
+p {
+  word-break: break-word;
 }
 
 /* Azul escuro quase preto */
@@ -24,6 +29,9 @@
 }
 .text-color2 {
   color: #1d2d44 !important;
+}
+.bg-color2 h2 {
+  margin-top: 0;
 }
 .border-color2 {
   border-color: #1d2d44 !important;
@@ -63,7 +71,7 @@
 }
 
 .logo-mobile {
-  width: 60%;
+  width: 70%;
 }
 .btn-more {
   background: none !important;
@@ -75,8 +83,8 @@
 .text-navigation {
   font-size: 20px;
   color: white;
-  border-bottom: 2px solid #f0ebd8; /* Cor da linha */
-  padding-bottom: 4px; /* Espaço entre texto e linha */
+  border-bottom: 2px solid #f0ebd8;
+  padding-bottom: 4px;
   text-decoration: none;
 }
 /* Container que tem o overflow-x */
