@@ -1,0 +1,93 @@
+@media (width < 55.62em) {
+    .mainContainer{
+        gap: 1.5em;
+    }
+
+    .form-box{
+        flex-shrink: 1;
+    }
+
+    .register-text {
+        width: 6em;
+    }
+
+    .register-link {
+        text-align: center;
+        width: 6em;
+    }
+}
+
+@media (width < 35.22em) {
+    .header-logo {
+        padding: 1.5em .5em 2.5em;
+    }
+
+    .header-logo a img{
+        width: 30%;
+    }
+
+    .mainContainer {
+        flex-direction: column-reverse;
+        overflow: hidden;
+        gap: 3em;
+    }
+
+    .wrapperContainer {
+        background-image: none;
+    }
+
+    .register {
+        padding-bottom: 5em;
+        width: 100%;
+    }
+
+    .register-text {
+        width:inherit;
+    }
+
+    .register-link {
+        width: initial;
+    }
+
+    .inputbox {
+        margin-right: 0;
+    }
+
+    .btn {
+        margin: var(--margin-bottom-form);
+    }
+
+    .form-box {
+        padding: 1.5em var(--centralization-mobile) 1.5em 3em;
+        margin-left: var(--centralization-mobile);
+    }
+
+    .titleForm:not(.cadastroTitle) {
+        margin-bottom: 2em;
+    }
+
+    form {
+        margin: 0;
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-bottom: 1em;
+        background-color: var(--secundary-color);
+    }
+
+    .container-footer {
+        display: flex;
+        width: 100%;
+        padding-bottom: 1em;
+        justify-content: space-evenly;
+    }
+
+    .footer img {
+        display: block;
+        width: 50%;
+    }
+}
