@@ -5,18 +5,26 @@
 
     --margin-bottom-form: 2.5em;
     --margin-bottom-form-cadastro: 1em;
+    --margin-right-inputs: 5em;
     --font-size-form: 1rem;
     --border-radius: .8rem;
+    --centralization-mobile: 4em;
+}
+
+@font-face {
+    font-family: poppins;
+    src: url(fonts/Poppins/Poppins-Thing.ttf) format("ttf");
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+    font-family: poppins;
     background-color: var(--background-color);
     margin: 0;
+    min-height: 100dvh;
 }
 
 .container {
-    max-width: 127.6rem;
+    max-width: 117.6rem;
     margin: auto;
 }
 
@@ -28,26 +36,17 @@ body {
     background-image: linear-gradient(to right, var(--background-color) 50%, var(--primary-color) 50%);
 }
 
-.row>* {
-    flex: 1 0 auto;
-}
-
 .mainContainer {
     display: flex;
+    gap: 8em;
     justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-}
-
-form {
-    margin-right: 25em;
 }
 
 .register {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 20em;
+    justify-content: center;
     color: white;
     font-size: 1.65em;
 }
@@ -62,7 +61,7 @@ form {
 }
 
 .register-link a {
-    color: white;
+    color: inherit;
     text-decoration: none;
 }
 
@@ -71,11 +70,9 @@ form {
 }
 
 .form-box {
-    display: flex;
-    align-items: center;
+    padding: 1em 3em;
     flex-direction: column;
     background-color: var(--primary-color);
-    padding: 2em 0 2em 2em;
     border-radius: var(--border-radius) 0 0 var(--border-radius);
     min-height: 25em;
 }
@@ -83,7 +80,7 @@ form {
 .titleForm {
     text-align: center;
     color: var(--secundary-color);
-    font-size: 2em;
+    font-size: 1.7em;
     font-weight: 400;
     margin: 0;
     margin-bottom: 1.2em;
@@ -111,32 +108,31 @@ form {
     width: 20em;
     padding: .8em 0 .8em .3em;
     margin-bottom: var(--margin-bottom-form);
-    margin-right: 5em;
+    margin-right: var(--margin-right-inputs);
     border-radius: var(--border-radius);
     border: 2px solid var(--secundary-color);
     font-size: var(--font-size-form);
     background-color: transparent;
     transition: all .2s ease-in-out;
-
 }
 
 .inputboxCadastro {
     margin: 0;
-    margin-right: 5em;
+    margin-right: var(--margin-right-inputs);
     margin-bottom: var(--margin-bottom-form-cadastro);
 }
 
 .inputbox:focus {
     padding-left: .5em;
-    outline: 2px solid green;
+    outline: 1px solid white;
 }
 
 .inputbox:invalid:focus {
-    outline: 2px solid red
+    outline: 2px solid #ff000d;
 }
 
-.form-box input::placeholder {
-    color: #cfcfcf;
+.inputbox::placeholder {
+    color: color-mix(in srgb, var(--secundary-color) 47%, transparent);
 }
 
 .btnDefault {
@@ -145,8 +141,9 @@ form {
     border: none;
     border-radius: var(--border-radius);
     font-weight: 300;
-    font-family: "Poppins", sans-serif;
+    font-family: poppins;
     cursor: pointer;
+    color: var(--background-color);
     transition: all .2s ease-in-out;
 }
 
@@ -154,11 +151,30 @@ form {
     background-color: color-mix(in srgb, var(--secundary-color) 80%, transparent);
 }
 
-.btn_cadastro{
+.btn_cadastro {
     margin: var(--margin-bottom-form-cadastro) 0 0;
 }
 
 .btn {
     display: flex;
     justify-content: center;
+}
+
+.container-footer {
+    display: none;
+}
+
+.addressFooter p {
+    font-style: normal;
+    font-weight: 300;
+    margin: 0;
+}
+
+.footer h3 {
+    font-weight: 400;
+    margin: 1em 0 0;
+}
+
+.footer img {
+    display: none;
 }
