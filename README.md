@@ -24,6 +24,19 @@ O site foi construído com **HTML**, **CSS**, **JavaScript** e **Bootstrap 5**, 
 
 ---
 
+## **🔄 Integração Dev + Ops**
+Este projeto aplica o conceito de DevOps para unir:  
+- **Desenvolvimento (Dev):** Criação do código, design e experiência do usuário.  
+- **Operações (Ops):** Versionamento, automação de tarefas e pipeline de entrega contínua.  
+
+**Principais práticas aplicadas:**  
+✔ Uso de **GitHub** para versionamento e colaboração  
+✔ Pull Requests para revisão de código  
+✔ Deploy automatizado (CI/CD)  
+✔ Estrutura modular e organizada do código 
+
+---
+
 ## **🚀 Como Executar o Projeto**
 ```bash
 # 1. Clone o repositório
@@ -35,6 +48,13 @@ cd valecel-ecommerce
 # 3. Abra o arquivo index.html no navegador
 
 ```
+---
+
+## **📐 Design do Projeto**
+🔗 **[Link para o design no Figma](https://www.figma.com/design/OQJo4cKiByeNXGuylFfw8i/Valecel?node-id=0-1&t=wgvi57z2oRUOqkiU-1)**  
+
+---
+
 ## **👥 Equipe**
 |    Nome    |      Setor      |
 |------------|-----------------|
@@ -53,7 +73,3 @@ cd valecel-ecommerce
 | Andrei     | Operações       |
 | Francielle | Operações       |
 | Germano    | Operações       |
-
-
-
-
