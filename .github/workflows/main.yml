@@ -15,8 +15,6 @@ jobs:
         username: ${{ secrets.ftp_user }}
         password: ${{ secrets.ftp_password }}
         server-dir: /sitevalecel.valecelinfo.com.br/   
-        protocol: ftps
-         port: 21
         exclude: |
           */.git
           */.github/*
