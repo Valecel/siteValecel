@@ -13,5 +13,5 @@ jobs:
       with:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.ftp_PASSWORD }}
-        server-dir: sitevalecel.valecelinfo.com.br/
+        password: ${{ secrets.FTP_PASSWORD }}
+        server-dir: sitevalecel.valecelinfo.com.br
