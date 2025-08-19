@@ -58,6 +58,7 @@
     }
 
     .form-box {
+        width: 70%;
         padding: 1.5em var(--centralization-mobile) 1.5em 3em;
         margin-left: var(--centralization-mobile);
     }
