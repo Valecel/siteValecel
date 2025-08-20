@@ -23,9 +23,8 @@ jobs:
           port: 21
 
           # publica na RAIZ do subdomínio
-          server-dir: /sitevalecel.valecelinfo.com.br/
+          server-dir: ./
           local-dir: ./SiteValecel/      # raiz do repo; 
-          dangerous-clean-slate: true
           timeout: 60000
           exclude: |
             **/.git/**                # nunca enviar a pasta .git/
