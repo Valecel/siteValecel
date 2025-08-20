@@ -1,27 +1,43 @@
-on:
-    push:
-        branches:
-            - main 
 name: 🚀 Deploy website on push
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}   # permite rodar manualmente pela aba Actions
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v4
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ${{ secrets.ftp_host }}
-        username: ${{ secrets.ftp_user }}
-        password: ${{ secrets.ftp_password }}
-        server-dir: /sitevalecel.valecelinfo.com.br/   
-        exclude: |
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      # (opcional) diagnóstico de rede
+      - name: 🔎 DNS/Port check
+        run: |
+          echo "nslookup:" && nslookup ${{ secrets.ftp_host }} || true
+          echo "FTP 21:" && nc -vz ${{ secrets.ftp_host }} 21 || true
+          echo "FTPS 990:" && nc -vz ${{ secrets.ftp_host }} 990 || true
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.ftp_host }}         # ex: ftp.sitevalecel.valecelinfo.com.br
+          username: ${{ secrets.ftp_user }}       # ex: devops@sitevalecel.valecelinfo.com.br
+          password: ${{ secrets.ftp_password }}
+          server-dir: /sitevalecel.valecelinfo.com.br/
+          protocol: ftps
+          port: 21
+          timeout: 60000
+          # local-dir: ./               # descomente e ajuste se os arquivos estiverem em subpasta
+          exclude: |
             **/.git*
             **/.github/**
             **/.ftp-deploy-sync-state.json
+            **/.DS_Store
             README.md
             LICENSE
+
         
