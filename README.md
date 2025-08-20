@@ -73,3 +73,18 @@ cd valecel-ecommerce
 | Andrei     | Operações       |
 | Francielle | Operações       |
 | Germano    | Operações       |
+
+---
+
+## 🖼️ Screenshots Desktop 💻
+
+<img src="SiteValecel/imagens/HomeDesktop.png" alt="Home Desktop" width="400"/>
+<img src="SiteValecel/imagens/printLoginDesktop.png" alt="Login Desktop" width="400"/>
+<img src="SiteValecel/imagens/printCadastroDesktop.png" alt="Cadastro Desktop" width="400"/>
+
+## 🖼️ Screenshots Mobile 📱
+
+<img src="SiteValecel/imagens/homeMobile.png" alt="Home Desktop" width="400"/>
+<img src="SiteValecel/imagens/printLoginMobile1.png" alt="Login Desktop" width="400"/>
+<img src="SiteValecel/imagens/printCadastroMobile1.png" alt="Cadastro Desktop" width="400"/>
+
