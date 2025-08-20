@@ -25,10 +25,6 @@ jobs:
           # publica na RAIZ do subdomínio
           server-dir: /sitevalecel.valecelinfo.com.br/
           local-dir: ./      # raiz do repo; ajuste se usar subpasta (ex.: ./SiteValecel/)
-
-          # ⚠️ RODE UMA VEZ para limpar a raiz remota (remove .git/ que já foi enviada)
-          dangerous-clean-slate: true
-
           timeout: 60000
           exclude: |
             **/.git/**                # nunca enviar a pasta .git/
