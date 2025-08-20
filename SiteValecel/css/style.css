@@ -1,130 +1,147 @@
-
-/* reset */
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 100;
+  font-style: normal;
+  overflow-x: hidden;
 }
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+
+header,
+header nav {
+  border: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+p {
+  word-break: break-word;
 }
 body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-.carousel-caption{
-    width: 90%;
-    align-content: center;
-    position: relative;
-    top: 0.2rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    left:5%;
-    background-color: rgba(214, 148, 200, 0.195);
-    box-shadow: 0px 2px 10px 2px #00000082;
-    border: 1px solid #00000082;
-    border-radius: 20px;
-        
-}
-#carousel-caption {
-    text-align: center;   
-}
-.carousel-indicators{
-    bottom: -1.5rem;
-    margin-bottom: 2px;
-}
-.carousel-item img {
-    background-size: cover;
-    height: 250px;
-    width: 100%;         
-    border-radius: 20px;
-    padding: 5px;
-}
-.carousel-caption p{
-    font-size: 1.3rem;
-    font-weight: 300;
-    color: rgb(114, 122, 121);
-}
-.carousel-caption h3{
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: rgb(37, 129, 118);
-}
-.carousel-control-prev-icon, .carousel-control-next-icon {
-    background-color: rgba(117, 2, 92, 0.03);
-    border-radius: 50%;
-    box-shadow: 0px 2px 10px 2px #00000082;
-    
-}
-.menu-icon {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 35px;
-    height: 25px;
+  margin: 0;
+  padding: 0;
+  background-color: #1d2d44;
 }
 
-.menu-icon span {
-    display: block;
-    background-color: black;
-    height: 4px;
-    width: 100%;
-    border-radius: 5px;
-    transition: 0.3s;
+.bg-color1 {
+  background-color: #0d1321 !important;
+}
+.text-color1 {
+  color: #0d1321 !important;
+}
+.border-color1 {
+  border-color: #0d1321 !important;
 }
 
-/* Efeito de animação ao clicar */
-.navbar-toggler[aria-expanded="true"] .menu-icon span:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
+/* Azul profundo */
+.bg-color2 {
+  background-color: #1d2d44 !important;
+}
+.text-color2 {
+  color: #1d2d44 !important;
+}
+.bg-color2 h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+.border-color2 {
+  border-color: #1d2d44 !important;
 }
 
-.navbar-toggler[aria-expanded="true"] .menu-icon span:nth-child(2) {
-    opacity: 0;
+.bg-color3 {
+  background-color: #3e5c76 !important;
+}
+.text-color3 {
+  color: #3e5c76 !important;
+}
+.border-color3 {
+  border-color: #3e5c76 !important;
 }
 
-.navbar-toggler[aria-expanded="true"] .menu-icon span:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
+.bg-color4 {
+  background-color: #748cab !important;
 }
-.navbar-toggler {
-    position: absolute;
-    right: 10px; /* Ajuste conforme necessário */
-    top: 10px;
+.text-color4 {
+  color: #748cab !important;
+}
+.border-color4 {
+  border-color: #748cab !important;
 }
 
+.bg-color5 {
+  background-color: #f0ebd8 !important;
+}
+.text-color5 {
+  color: #f0ebd8 !important;
+}
+.border-color5 {
+  border-color: #f0ebd8 !important;
+}
 
+.logo-mobile {
+  width: 70%;
+}
+.btn-more {
+  background: none !important;
+  background-color: transparent !important;
+  border: 1px solid #1d2d44;
+  color: #1d2d44;
+}
 
+.text-navigation {
+  font-size: 20px;
+  color: white;
+  border-bottom: 2px solid #f0ebd8;
+  padding-bottom: 4px;
+  text-decoration: none;
+}
+
+.scroll-container {
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #222 #eee;
+}
+
+/* Chrome, Safari, Edge */
+.scroll-container::-webkit-scrollbar {
+  height: 6px;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-track {
+  background: #eee;
+  border-radius: 4px;
+}
+
+.scroll-container::-webkit-scrollbar-thumb {
+  background-color: #222;
+  border-radius: 4px;
+  border: 1px solid #eee;
+}
+
+.spacer {
+  min-width: 100px;
+}
+
+.cards-wrapper {
+  margin-bottom: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+.card-scroll {
+  flex-shrink: 0;
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+@media (min-width: 576px) {
+  .card-scroll {
+    min-width: 200px; /* desktop/tablet: largura fixa menor */
+  }
+}

@@ -1,294 +1,349 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
-<head>
+  <head>
     <!-- meta tags configuraçoes e importações -->
-    <meta charset="UTF-8">
-    <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' https://cdn.jsdelivr.net; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;">
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self' https://cdn.jsdelivr.net; script-src 'self' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net;"
+    />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Site Valecel Everd">
-    <meta name="keywords" content="Valecel, Everd, site">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Site Valecel Everd" />
+    <meta name="keywords" content="Valecel, Everd, site" />
     <title>Site Valecel by Everd</title>
-    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="shortcut icon" href="img/favicon.ico" />
     <!-- google fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
     <!-- bootstrap css -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
     <!-- js bootstrap -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
+      crossorigin="anonymous"
+    ></script>
     <!-- icones bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
     <!-- css do projeto -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+    </style>
+  </head>
 
-</head>
-<!-- corpo do projeto -->
+  <body>
+    <header>
+      <nav class="d-flex flex-column bg-color2 m-0 p-0 border-0 shadow-none">
+        <div class="d-flex justify-content-between align-items-center p-3">
+          <a href="/SiteValecel/index.html">
+            <img
+              src="/SiteValecel/imagens/Logo-valeCel.svg"
+              class="logo-mobile"
+            />
+          </a>
 
-<body>
-    <!-- container principal -->
-    <div class="containner" style="background-color:#b394d6b5;">
-        <header>
-            <!-- navbar com imagem -->
-            <nav class="navbar navbar-expand-lg navbar-light">
-                <div class="container">
-                    <a class="navbar-brand" href="#">
-                        <img src="./imagens/logo.png" alt="Logo Valecel" width="100" height="100"
-                            class="rounded-circle">
-                    </a>
-                    <button class="navbar-toggler border p-1" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false"
-                        aria-label="Alterar Navegação">
-                        <div class="menu-icon">
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                        </div>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                        <div class="navbar-nav fs-5">
-                            <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            <a class="nav-link" href="#">Produtos</a>
-                            <a class="nav-link" href="#">Contatos</a>
-                            <a class="nav-link" href="#">Sobre</a>
-                            <a class="nav-link" href="#">Login</a>
-                            <a class="nav-link" href="#">Ajuda</a>
-                        </div>
-                    </div>
-                    <form class="d-flex mt-3 ms-5" role="search">
-                        <input class="form-control me-2 ms-5" type="search" placeholder="Encontre o que você procura"
-                            autocomplete="off" aria-label="Search" style="max-width: 90%;">
-                        <button class="btn btn-secondary" type="submit">Buscar</button>
-                    </form>
-                </div>
-            </nav>
-        </header>
-    </div>
-    <!-- conteudo principal -->
-    <main style="background-color:rgba(200, 148, 214, 0.195);">
-        <!-- produtos destaque -->
-        <section>
-            <div class="container">
-                <div class="d-flex justify-content-center">
-                    <div class="col-12 col-md-6 text-center mt-5 mb-3 border p-3 rounded-pill  fw-normal"
-                        style="background-color:#b394d6b5;">
-                        <h2 class="fs-4">Produtos em Destaque</h2>
-                    </div>
-                </div>
+          <div class="d-flex align-items-center gap-3">
+            <a href="/SiteValecel/cart.html" class="d-md-none">
+              <img
+                src="/SiteValecel/imagens/Shopping Cart.svg"
+                style="width: 8vw"
+              />
+            </a>
+
+            <a
+              href="/SiteValecel/products.html"
+              class="text-white text-decoration-none fs-5 d-none d-md-inline"
+            >
+              Produtos
+            </a>
+            <a
+              href="/SiteValecel/cart.html"
+              class="text-white text-decoration-none fs-5 d-none d-md-inline"
+            >
+              Carrinho
+            </a>
+            <a
+              href="/SiteValecel/contacts.html"
+              class="text-white text-decoration-none fs-5 d-none d-md-inline"
+            >
+              Contatos
+            </a>
+
+            <a href="/SiteValecel/login.html">
+              <img src="imagens/User.svg" />
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="d-flex flex-row justify-content-between align-items-center px-5 gap-4 d-md-none"
+        >
+          <a href="/SiteValecel/index.html" class="text-navigation">Home</a>
+          <a
+            href="/SiteValecel/products.html"
+            class="text-decoration-none fs-5 text-white"
+          >
+            Produtos
+          </a>
+          <a
+            href="/SiteValecel/contacts.html"
+            class="text-decoration-none fs-5 text-white"
+          >
+            Contatos
+          </a>
+        </div>
+      </nav>
+    </header>
+
+    <div class="d-block d-md-none bg-color2 pt-4 position-relative">
+      <h2 class="text-center text-white pb-3">Destaque da Semana</h2>
+      <div class="row justify-content-end gx-0 position-relative">
+        <div class="col-auto">
+          <div
+            class="card text-white"
+            style="background-color: #748cab; height: 25rem; width: 20rem"
+          >
+            <img
+              src="/SiteValecel/imagens/iphone14Roxo.png"
+              style="height: 100%"
+              alt="Iphone 14"
+            />
+          </div>
+          <div class="row">
+            <div class="col pe-0">
+              <span class="text-white" style="font-size: 28px">Iphone 14</span>
             </div>
-            <div class="containner-produtos">
-                <div class="carrousel-produtos">
-                    <div id="carouselCaptions" class="carousel" data-bs-ride="false">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="0" class="active"
-                                aria-current="true" aria-label="Slide 1" style="border-bottom: none;"></button>
-                            <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="1"
-                                aria-label="Slide 2" style="border-bottom: none;"></button>
-                            <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="2"
-                                aria-label="Slide 3" style="border-bottom: none;"></button>
-                            <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="3"
-                                aria-label="Slide 4" style="border-bottom: none;"></button>
-                            <button type="button" data-bs-target="#carouselCaptions" data-bs-slide-to="4"
-                                aria-label="Slide 5" style="border-bottom: none;"></button>
-                        </div>
-                        <div class="carousel-inner">
-                            <!-- Grupo 1: Slide com 2 imagens -->
-                            <div class="carousel-item active">
-                                <div class="row">
-                                    <div class="col-12 col-md-6" style="padding: 5px;">
-                                        <a class="d-flex justify-content-center" href="produtos.html" target="_blank"
-                                            rel="noopener noreferrer">
-                                            <img src="./imagens/imagen-1.jpeg" class="d-block w-50 " alt="Imagem 1">
-                                        </a>
-                                        <div class="carousel-caption mt-3 mb-3">
-                                            <h3>Iphone 6s</h3>
-                                            <p>Marca,modelo,capacidade,memoria,Cor.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 d-none d-md-block" style="padding: 5px;">
-                                        <a class="d-flex justify-content-center" href="produtos.html" target="_blank"
-                                            rel="noopener noreferrer">
-                                            <img src="./imagens/imagem-2.jpg" class="d-block w-50" alt="Imagem 2">
-                                        </a>
-                                        <div class="carousel-caption mt-3 mb-3">
-                                            <h3>Moto g24</h3>
-                                            <p>Marca,modelo,capacidade,memoria,Cor.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Grupo 2: Slide com 2 imagens -->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-12 col-md-6" style="padding: 5px;">
-                                        <a class="d-flex justify-content-center" href="produtos.html" target="_blank"
-                                            rel="noopener noreferrer">
-                                            <img src="./imagens/imagem-3.jpg" class="d-block w-50 " alt="Imagem 3">
-                                        </a>
-                                        <div class="carousel-caption mt-3 mb-3">
-                                            <h3>Nome do Smartphone3</h3>
-                                            <p>Marca,modelo,capacidade,memoria,Cor.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 d-none d-md-block" style="padding: 5px;">
-                                        <a class="d-flex justify-content-center" href="produtos.html" target="_blank"
-                                            rel="noopener noreferrer">
-                                            <img src="./imagens/imagem-5.jpg" class="d-block w-50" alt="Imagem 4">
-                                        </a>
-                                        <div class="carousel-caption mt-3 mb-3">
-                                            <h3>Nome do Smartphone4</h3>
-                                            <p>Marca,modelo,capacidade,memoria,Cor.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Grupo 3: Slide com 2 imagens -->
-                            <div class="carousel-item">
-                                <div class="row">
-                                    <div class="col-12 col-md-6" style="padding: 5px;">
-                                        <a class="d-flex justify-content-center" href="produtos.html" target="_blank"
-                                            rel="noopener noreferrer">
-                                            <img src="./imagens/imagem-2.jpg" class="d-block w-50" alt="Imagem 5">
-                                        </a>
-                                        <div class="carousel-caption mt-3 mb-3">
-                                            <h3>Nome do Smartphone5</h3>
-                                            <p>Marca,modelo,capacidade,memoria,Cor.</p>
-                                        </div>
-                                    </div>
-                                    <div class="col-12 col-md-6 d-none d-md-block" style="padding: 5px;">
-                                        <a class="d-flex justify-content-center" href="produtos.html" target="_blank"
-                                            rel="noopener noreferrer">
-                                            <img src="./imagens/imagem-5.jpg" class="d-block w-50" alt="Imagem 6">
-                                        </a>
-                                        <div class="carousel-caption mt-3 mb-3">
-                                            <h3>Nome do Smartphone6</h3>
-                                            <p>Marca,modelo,capacidade,memoria,Cor.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Controles do Carousel -->
-                        <button class="carousel-control-prev " type="button" data-bs-target="#carouselCaptions"
-                            data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon mb-5" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselCaptions"
-                            data-bs-slide="next">
-                            <span class="carousel-control-next-icon mb-5" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
-                    </div>
-                </div>
-        </section>
-        <!-- Orçamento -->
-        <section>
-            <div class="container mt-5 mb-3 border p-3">
-                <div class="d-flex justify-content-center">
-                    <div class="col-12 col-md-6 text-center mt-5 border p-3 rounded-pill fs-5 fw-normal"
-                        style="background-color:#b394d6b5;">
-                        <h2 class="fs-4">Solicite seu Orçamento</h2>
-                    </div>
-                </div>
-                <div class="container">
-                    <form id="formOrcamento" onsubmit="abrirWhatsapp()">
-                        <div class="mt-2 d-flex flex-column justify-content-center m-2 p-2">
-                            <label class="form-label display-6 fs-4">Nome</label>
-                            <input type="text" class="form-control" style="max-width:75%" name="nome" id="nome"
-                                placeholder="Nome Sobrenome" required>
-                            <label class="form-label display-6 fs-4">Endereço</label>
-                            <input type="text" class="form-control" style="max-width:75%" name="endereco" id="endereco"
-                                placeholder="Rua, Número, Bairro, Cidade.">
-                            <label class="form-label display-6 fs-4">Email</label>
-                            <input type="email" class="form-control" style="max-width:50%" name="email" id="email"
-                                placeholder="name@example.com">
-                            <label class="form-label display-6 fs-4">Telefone</label>
-                            <input type="text" class="form-control" style="max-width:50%" name="telefone" id="telefone"
-                                placeholder="00000000000">
-                            <label class="form-label fs-5">Problema do Aparelho</label>
-                            <textarea class="form-control" style="max-width:75%" name="mensagem" id="mensagem" rows="5"
-                                placeholder="Descreva o problema do seu aparelho"></textarea>
-                            <button type="submit" class="btn btn-secondary mt-3" id="btnEnviarOrcamento"
-                                style="width:20%">Enviar</button>
-                        </div>
-                    </form>
-                </div>
+          </div>
+          <div class="row gx-0 mx-0">
+            <div class="col text-end pe-4">
+              <span class="text-white" style="font-size: 28px"
+                >R$ 4.300,00</span
+              >
             </div>
-        </section>
-        <section>
-            <!-- Footer -->
-            <footer class="text-center text-lg-start" style="background-color:rgba(214, 148, 200, 0.195);">
-                <!-- Section: Social media -->
-                <section class="d-flex justify-content-between p-4" style="background-color:#b394d6b5;">
-                    <!-- Left -->
-                    <div class="me-5">
-                        <span>Fale com a Gente</span>
-                    </div>
-                    <!-- Right -->
-                    <div class="fs-1 d-flex justify-content-between">
-                        <a href="https://wa.me/5551998831765" class="text-success me-4" target="_blank"
-                            rel="noopener noreferrer">
-                            <i class="bi bi-whatsapp"></i>
-                        </a>
-                        <a href="https://www.facebook.com/valecelinfo" target="_blank" rel="noopener noreferrer"
-                            class="me-3">
-                            <i class="bi bi-facebook"></i>
-                        </a>
-                        <a href="https://www.google.com/maps/search/VALECEL+INFO+ASSIST%C3%8ANCIA+T%C3%89CNICA"
-                            class="text-danger me-3" target="_blank" rel="noopener noreferrer">
-                            <i class="bi bi-google"></i>
-                        </a>
-                        <a href="https://www.instagram.com/valecelinfo" class="text-danger me-3" target="_blank"
-                            rel="noopener noreferrer">
-                            <i class="bi bi-instagram"></i>
-                        </a>
-                    </div>
-                </section>
-                <section class="">
-                    <div class="d-inline p-4">
-                        <!-- Grid row -->
-                        <div class="row mt-3">
-                            <!-- Grid column -->
-                            <div class="col-md-6 col-lg-4 col-xl-3 mb-4">
-                                <!-- Content -->
-                                <div>
-                                    <h6 class="text fw-normal ps-4">Valecel Info Assistência Técnica</h6>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-lg-4 col-xl-3 mb-4 ms-auto">
-                                <!-- Links -->
-                                <h6 class="mb-4 mt-0 text-uppercase fw-normal">Contato</h6>
-                                <p><i class="mr-3 lh-lg"></i> Vale Real, RS, 95778-000, BR</p>
-                                <p><i class="bi bi-envelope mr-3"></i> assistencia@valecelinfo.com.br</p>
-                                <p><i class="bi bi-telephone mr-3 lh-lg"></i> (51) 998831765</p>
-                            </div>
-                            <!-- Grid column -->
-                        </div>
-                    </div>
-                </section>
-                <!-- Copyright -->
-                <div class="text-center p-3 bg-dark text-light">
-                    © <span id="year"></span> Valecel Info Assistência Técnica. Todos os direitos reservados.
-                </div>
-            </footer>
-            <!-- Footer -->
-        </section>
-    </main>
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-    <script src="./enviarform.js"></script>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+    <div
+      class="position-absolute w-100 d-flex w-100 justify-content-end d-md-none"
+      style="width: 60%; z-index: 10"
+    >
+      <button
+        class="bg-white px-4 py-2 rounded text-color2;"
+        style="margin-right: 8%; margin-top: 20px"
+      >
+        Comprar
+      </button>
+    </div>
+    <div
+      class="d-md-none"
+      style="
+        width: 100%;
+        height: 30px;
+        background-color: #1d2d44;
+        margin-bottom: 15px;
+      "
+    ></div>
 
+    <div class="d-none px-4 d-md-block">
+      <div class="row justify-content-center align-items-center gx-0">
+        <div class="col-md-6">
+          <h2 class="text-white mb-4" style="font-size: 60px">
+            Destaque da Semana
+          </h2>
+          <span class="text-white d-block" style="font-size: 28px">
+            Iphone 14
+          </span>
+          <span class="text-white d-block mb-4" style="font-size: 28px">
+            R$ 4.300,00
+          </span>
+          <div class="text-center">
+            <button class="bg-white px-4 py-2 rounded text-color2">
+              Comprar
+            </button>
+          </div>
+        </div>
+
+        <div class="col-md-6 d-flex justify-content-center">
+          <div
+            class="card text-white"
+            style="background-color: #748cab; height: 45rem; width: 45rem"
+          >
+            <img
+              src="/SiteValecel/imagens/iphone14Roxo.png"
+              style="height: 100%; object-fit: contain"
+              alt="Iphone 14"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-color5 px-4 py-5">
+      <div
+        class="d-flex flex-column flex-md-row justify-content-md-between align-items-start align-items-md-center mb-4"
+      >
+        <h3 class="mt-0">Os mais procurados:</h3>
+        <button class="btn-more px-4 py-1 rounded mb-5 mb-md-0">
+          VER TUDO
+        </button>
+      </div>
+      <div class="d-flex gap-4 overflow-x-auto w-100 scroll-container">
+        <div
+          class="card text-white card-scroll mx-auto cards-wrapper"
+          style="background-color: #748cab"
+        >
+          <img
+            src="/SiteValecel/imagens/iphone14.png"
+            class="card-img-top mx-auto"
+            style="height: 200px; object-fit: contain"
+            alt="Iphone 14"
+          />
+          <div class="card-body d-flex flex-row align-items-center gap-3">
+            <h5 class="pt-2 py-2" style="font-size: 21.09px">Iphone 14 Azul</h5>
+            <h3 class="pt-5" style="font-size: 26.36px">R$ 4.200,00</h3>
+          </div>
+        </div>
+        <div
+          class="card text-white card-scroll mx-auto cards-wrapper"
+          style="background-color: #748cab"
+        >
+          <img
+            src="/SiteValecel/imagens/imagem-motorola.png"
+            class="card-img-top mx-auto"
+            style="height: 200px; object-fit: contain"
+            alt="Motorola"
+          />
+          <div class="card-body d-flex flex-row align-items-center gap-3">
+            <h5 class="pt-2 py-2" style="font-size: 21.09px">Motorola G55</h5>
+            <h3 class="pt-5" style="font-size: 26.36px">R$ 1.700,00</h3>
+          </div>
+        </div>
+        <div
+          class="card text-white card-scroll mx-auto cards-wrapper"
+          style="background-color: #748cab"
+        >
+          <img
+            src="/SiteValecel/imagens/imagem2-motorola.png"
+            class="card-img-top mx-auto"
+            style="height: 200px; object-fit: contain"
+            alt="Motorola"
+          />
+          <div class="card-body d-flex flex-row align-items-center gap-3">
+            <h5 class="pt-2 py-2" style="font-size: 21.09px">Motorola G56</h5>
+            <h3 class="pt-5" style="font-size: 26.36px">R$ 1.800,00</h3>
+          </div>
+        </div>
+        <div
+          class="card text-white card-scroll mx-auto cards-wrapper"
+          style="background-color: #748cab"
+        >
+          <img
+            src="/SiteValecel/imagens/imagem-sansung.png"
+            class="card-img-top mx-auto"
+            style="height: 200px; object-fit: contain"
+            alt="Iphone 14"
+          />
+          <div class="card-body d-flex flex-row align-items-center gap-3">
+            <h5 class="pt-2 py-2" style="font-size: 21.09px">Galaxy A14</h5>
+            <h3 class="pt-5" style="font-size: 26.36px">R$ 1.100,00</h3>
+          </div>
+        </div>
+        <div
+          class="card text-white card-scroll mx-auto cards-wrapper"
+          style="background-color: #748cab"
+        >
+          <img
+            src="/SiteValecel/imagens/imagem-iphone.png"
+            class="card-img-top mx-auto"
+            style="height: 200px; object-fit: contain"
+            alt="Galaxy a14"
+          />
+          <div class="card-body d-flex flex-row align-items-center gap-3">
+            <h5 class="pt-2 py-2" style="font-size: 21.09px">Iphone Rosa</h5>
+            <h3 class="pt-5" style="font-size: 26.36px">R$ 3.300,00</h3>
+          </div>
+        </div>
+        <div
+          class="card text-white card-scroll mx-auto cards-wrapper"
+          style="background-color: #748cab"
+        >
+          <img
+            src="/SiteValecel/imagens/iphone14Roxo.png"
+            class="card-img-top mx-auto"
+            style="height: 200px; object-fit: contain"
+            alt="Iphone Rosa"
+          />
+          <div class="card-body d-flex flex-row align-items-center gap-3">
+            <h5 class="pt-2 py-2" style="font-size: 21.09px">Iphone 14 Roxo</h5>
+            <h3 class="pt-5" style="font-size: 26.36px">R$ 4.300,00</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="px-4 bg-color2 pt-5 pb-5">
+      <h3 class="text-white text-center text-md-start" style="font-size: 36px">
+        Sobre a ValeCel
+      </h3>
+
+      <h3
+        class="text-white pt-5 text-start text-md-center text-lg-start ms-lg-5"
+        style="font-size: 24px"
+      >
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ex ullam
+        accusantium corporis soluta reiciendis ea natus sunt cum sed dolorum.
+        Eius beatae ipsum alias laborum iure? Temporibus, ullam doloribus.
+        Corrupti.
+      </h3>
+    </div>
+
+    <footer class="bg-color5">
+      <div class="px-4 pt-3">
+        <div class="row text-md-start">
+          <div
+            class="col-12 col-md-4 order-3 order-md-1 d-flex mb-3 mb-md-0 justify-content-center justify-content-md-start"
+          >
+            <img
+              src="/SiteValecel/imagens/Logo Footer.svg"
+              style="width: 260px; height: 72px"
+              alt="Logo"
+            />
+          </div>
+
+          <div class="col-6 col-md-4 order-1 order-md-2">
+            <h5>Localização</h5>
+            <p>
+              Vale Real<br />
+              Rio Grande do Sul<br />
+              95778-000<br />
+              Brasil
+            </p>
+          </div>
+
+          <div class="col-6 col-md-4 order-2 order-md-3">
+            <h5>Contato</h5>
+            <p>
+              assistencia@valecelinfo.com.br <br />
+              (51) 998831765
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
 </html>
