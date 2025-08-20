@@ -24,7 +24,7 @@ jobs:
 
           # publica na RAIZ do subdomínio
           server-dir: ./
-          local-dir: ./SiteValecel/      # raiz do repo; 
+          local-dir: ./      # raiz do repo; 
           timeout: 60000
           exclude: |
             **/.git/**                # nunca enviar a pasta .git/
