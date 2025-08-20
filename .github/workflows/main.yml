@@ -2,9 +2,8 @@ name: 🚀 Deploy website on push
 
 on:
   push:
-    branches:
-      - main
-  workflow_dispatch: {}   # permite rodar manualmente pela aba Actions
+    branches: [ main ]
+  workflow_dispatch: {}
 
 jobs:
   web-deploy:
@@ -14,30 +13,30 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v4
 
-      # (opcional) diagnóstico de rede
-      - name: 🔎 DNS/Port check
-        run: |
-          echo "nslookup:" && nslookup ${{ secrets.ftp_host }} || true
-          echo "FTP 21:" && nc -vz ${{ secrets.ftp_host }} 21 || true
-          echo "FTPS 990:" && nc -vz ${{ secrets.ftp_host }} 990 || true
-
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.ftp_host }}         # ex: ftp.sitevalecel.valecelinfo.com.br
-          username: ${{ secrets.ftp_user }}       # ex: devops@sitevalecel.valecelinfo.com.br
+          server: ${{ secrets.ftp_host }}
+          username: ${{ secrets.ftp_user }}
           password: ${{ secrets.ftp_password }}
-          server-dir: /sitevalecel.valecelinfo.com.br/
           protocol: ftps
           port: 21
+
+          # publica na RAIZ do subdomínio
+          server-dir: /sitevalecel.valecelinfo.com.br/
+          local-dir: ./      # raiz do repo; ajuste se usar subpasta (ex.: ./SiteValecel/)
+
+          # ⚠️ RODE UMA VEZ para limpar a raiz remota (remove .git/ que já foi enviada)
+          dangerous-clean-slate: true
+
           timeout: 60000
-          # local-dir: ./               # descomente e ajuste se os arquivos estiverem em subpasta
           exclude: |
-            **/.git*
+            **/.git/**                # nunca enviar a pasta .git/
             **/.github/**
+            **/node_modules/**
             **/.ftp-deploy-sync-state.json
             **/.DS_Store
+            .gitattributes
+            .gitignore
             README.md
             LICENSE
-
-        
