@@ -54,6 +54,10 @@ jobs:
           sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
+      - name: Limpa processos antigos do Chrome/Chromedriver
+        run: |
+          pkill -9 chrome || true
+          pkill -9 chromedriver || true
       - name: Run Robot Framework tests
         run: |
           robot cenariosDeTestes/suites/validarMenuseItensDaPagina.robot
