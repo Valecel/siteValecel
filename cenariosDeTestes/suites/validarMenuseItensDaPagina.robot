@@ -1,7 +1,7 @@
 *** Settings ***
 # Trigger workflow: alteração para forçar execução do GitHub Actions
 Library    SeleniumLibrary
-Suite Setup    Open Browser    https://sitevalecel.valecelinfo.com.br/index.html    chrome
+Suite Setup    Open Browser    https://sitevalecel.valecelinfo.com.br/index.html    chrome    options=add_argument(--headless),add_argument(--no-sandbox),add_argument(--disable-dev-shm-usage),add_argument(--disable-gpu),add_argument(--window-size=1920,1080)
 Suite Teardown    Close Browser
 
 *** Variables ***
