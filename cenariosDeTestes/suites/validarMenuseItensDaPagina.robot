@@ -47,6 +47,3 @@ Validar texto HostGator na segunda pagina
     Sleep    ${DELAY}
     Wait Until Page Contains    HostGator
     Page Should Contain    HostGator
-
-# Os demais cenários foram removidos pois não são garantidos na página pública.
-# Caso queira testar outros elementos, adapte para o conteúdo realmente visível.
