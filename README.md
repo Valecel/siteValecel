@@ -1,4 +1,4 @@
-# **ValeCel – E-commerce** 🛒📱
+# **ValeCel – Site** 🛒📱
 
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5-blueviolet?logo=bootstrap)](https://getbootstrap.com/)
 [![HTML5](https://img.shields.io/badge/HTML5-orange?logo=html5)](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
@@ -8,7 +8,7 @@
 [![GitHub](https://img.shields.io/badge/GitHub-gray?logo=github)](https://github.com/)
 
 📌 **Objetivo:**  
-O **ValeCel** é um e-commerce desenvolvido como projeto acadêmico da disciplina de **DevOps**.  
+O **ValeCel** é um site desenvolvido como projeto acadêmico da disciplina de **DevOps**. 
 O site foi construído com **HTML**, **CSS**, **JavaScript** e **Bootstrap 5**, aplicando práticas de **integração contínua (CI)** e **entrega contínua (CD)**, unindo **Dev** e **Ops**.
 
 ---
@@ -43,7 +43,7 @@ Este projeto aplica o conceito de DevOps para unir:
 git clone https://github.com/usuario/valecel-ecommerce.git
 
 # 2. Acesse a pasta do projeto
-cd valecel-ecommerce
+cd siteValecel
 
 # 3. Abra o arquivo index.html no navegador
 
@@ -56,23 +56,23 @@ cd valecel-ecommerce
 ---
 
 ## **👥 Equipe**
-|    Nome    |      Setor      |
-|------------|-----------------|
-| Alessandro | Desenvolvimento |
-| Rebecca    | Desenvolvimento |
-| Bianca     | Desenvolvimento |
-| Willian    | Desenvolvimento |
-| Rickelmy   | Desenvolvimento |
-| Natan      | Desenvolvimento |
-| Jenifer    | UI/UX Design    |
-| Éverd      | Segurança       |
-| Lucas      | Segurança       |
-| Daniel     | Segurança       |
-| Jean       | Segurança       |
-| Everaldo   | Operações       |
-| Andrei     | Operações       |
-| Francielle | Operações       |
-| Germano    | Operações       |
+|    Nome    |            Setor            |
+|------------|-----------------------------|
+| Alessandro |  Gestor de Desenvolvimento  |
+| Rebecca    |   Desenvolvimento/Design    |
+| Bianca     |   Desenvolvimento/Design    |
+| Willian    |      Desenvolvimento        |
+| Rickelmy   |      Desenvolvimento        |
+| Natan      |      Desenvolvimento        |
+| Jenifer    |     Gestora de Design       |
+| Éverd      |     Gestor do Projeto       |
+| Lucas      |         Segurança           |
+| Daniel     |         Segurança           |
+| Jean       |         Segurança           |
+| Everaldo   |         Operações           |
+| Andrei     |         Operações           |
+| Francielle |         Operações           |
+| Germano    |         Operações           |
 
 ---
 
