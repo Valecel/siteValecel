@@ -9,6 +9,7 @@ ${DELAY}    2s
 
 *** Test Cases ***
 # Cenário 1: Validar título "Destaque da Semana"
+# Commit forçar execução do workflow no GitHub Actions
 Validar titulo destaque da semana
     Sleep    ${DELAY}
     Wait Until Page Contains    Destaque da Semana
