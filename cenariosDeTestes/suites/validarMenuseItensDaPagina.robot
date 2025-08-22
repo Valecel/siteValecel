@@ -2,7 +2,7 @@
 # Trigger workflow: alteração para forçar execução do GitHub Actions
 # Commit de teste para disparar pipeline no GitHub Actions
 Library    SeleniumLibrary
-Suite Setup    Open Browser    https://sitevalecel.valecelinfo.com.br/index.html    chrome    arguments=--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080
+Suite Setup    Open Browser    https://sitevalecel.valecelinfo.com.br/index.html    chrome    arguments=--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080 --user-data-dir=/tmp/chrome-profile
 Suite Teardown    Close Browser
 
 *** Variables ***
