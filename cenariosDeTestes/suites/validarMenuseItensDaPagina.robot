@@ -1,4 +1,5 @@
 *** Settings ***
+# Trigger workflow: alteração para forçar execução do GitHub Actions
 Library    SeleniumLibrary
 Suite Setup    Open Browser    https://sitevalecel.valecelinfo.com.br/index.html    chrome
 Suite Teardown    Close Browser
