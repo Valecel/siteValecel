@@ -119,3 +119,4 @@ Os testes automatizados deste projeto são escritos em Robot Framework, uma ling
 # trigger workflow after yaml overwrite again
 # trigger workflow after yaml overwrite final
 # trigger workflow after yaml overwrite with explicit on
+# trigger workflow after yaml overwrite with explicit on (final)
