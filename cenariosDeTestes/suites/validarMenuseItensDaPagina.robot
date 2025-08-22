@@ -1,7 +1,4 @@
 *** Settings ***
-# Trigger workflow: alteração para forçar execução do GitHub Actions
-# Commit de teste para disparar pipeline no GitHub Actions
-# Commit forçar novo push em 22/08/2025
 Library    SeleniumLibrary
 Suite Setup    Open Browser    https://sitevalecel.valecelinfo.com.br/index.html    chrome    arguments=--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080 --user-data-dir=/tmp/chrome-profile
 Suite Teardown    Close Browser
@@ -11,7 +8,6 @@ ${DELAY}    2s
 
 *** Test Cases ***
 # Cenário 1: Validar título "Destaque da Semana"
-# Commit forçar execução do workflow no GitHub Actions
 Validar titulo destaque da semana
     Sleep    ${DELAY}
     Wait Until Page Contains    Destaque da Semana
