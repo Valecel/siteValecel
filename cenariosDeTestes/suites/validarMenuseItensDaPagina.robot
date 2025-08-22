@@ -36,10 +36,12 @@ Validar botao Comprar
 
 # Cenário 5: Validar exibição da imagem do produto
 Validar imagem do produto
-    Sleep    ${DELAY}
+    Sleep    5s
     Execute JavaScript    window.scrollTo(0, document.body.scrollHeight)
-    Wait Until Element Is Visible    xpath=/html/body/div[4]/div/div[2]/div/img
-    Element Should Be Visible    xpath=/html/body/div[4]/div/div[2]/div/img
+    Wait Until Element Is Visible    //img[contains(@src, 'imagem')]    10s
+    Element Should Be Visible    //img[contains(@src, 'imagem')]
+    Capture Page Screenshot
+    Log    Screenshot salvo: ${OUTPUT DIR}/selenium-screenshot-1.png
 
 # Cenário 6: Validar a presença do texto "HostGator" na segunda página
 Validar texto HostGator na segunda pagina
