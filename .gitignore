@@ -1,0 +1,29 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Robot Framework
+output.xml
+log.html
+report.html
+*.png
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Node/npm
+node_modules/
+
+# Outros
+*.log
+.env
+
+# Selenium/Robot screenshots
+debug*.png
+selenium-screenshot-*.png
