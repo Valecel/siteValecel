@@ -108,3 +108,4 @@ Os testes automatizados deste projeto são escritos em Robot Framework, uma ling
 # trigger workflow
 # trigger workflow again
 # trigger workflow via actions
+# trigger workflow after branch rename
