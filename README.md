@@ -1,3 +1,4 @@
+<!-- Trigger workflow: alteração para forçar execução do GitHub Actions -->
 # ValeCel – E-commerce
 
 ## Visão Geral do Projeto
