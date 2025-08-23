@@ -1,85 +1,60 @@
-name: Robot Framework Tests
+name: Teste de Performance K6
 
 on:
   push:
     branches:
-      - main
-      - testesValidosQa
+      - main  # Substitua 'main' pelo nome da sua branch principal, se necessário
   pull_request:
     branches:
       - main
-      - testesValidosQa
 
 jobs:
-  robot-tests:
+  performance-tests:
+    name: Teste de Performance K6
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout repository
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
+      - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Install Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: '16'
+
+      - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install robotframework robotframework-seleniumlibrary selenium webdriver-manager
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      # Instalar navegadores e drivers
-      - name: Install browsers and drivers
+      - name: Install k6
         run: |
-          sudo apt update
-          # Edge + driver
-          curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-          sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
-          sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
-          sudo apt update
-          sudo apt install -y microsoft-edge-stable
+          echo ">>> Instalando k6"
+          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69 || echo "Key já adicionada"
+          sudo apt-add-repository "deb https://dl.k6.io/deb stable main" || echo "Repository já adicionada"
+          sudo apt-get update
+          sudo apt-get install -y k6
 
-          # Chrome
-          sudo apt install -y chromium-browser chromium-chromedriver
-
-          # Firefox
-          sudo apt install -y firefox-geckodriver
-
-          # Opera
-          sudo apt install -y opera
-
-      - name: Run Robot Framework tests with fallback
+      - name: Run K6 performance tests with fallback
         run: |
           set -e
-          for browser in edge chrome firefox opera; do
-            if command -v ${browser} >/dev/null 2>&1 || command -v ${browser}-stable >/dev/null 2>&1; then
-              echo "==========================================="
-              echo ">>> Tentando rodar testes no $browser"
-              echo "==========================================="
-              if robot -v BROWSER:$browser -v HEADLESS:True cenariosDeTestes/suites/validarMenuseItensDaPagina.robot; then
-                echo "==========================================="
-                echo ">>> Testes passaram com sucesso no $browser ✅"
-                echo "==========================================="
-                exit 0
-              else
-                echo "==========================================="
-                echo ">>> Falha nos testes com $browser ❌"
-                echo ">>> Tentando próximo navegador..."
-                echo "==========================================="
-              fi
-            else
-              echo ">>> $browser não disponível no runner, pulando..."
-            fi
-          done
-          echo "❌ Nenhum navegador conseguiu rodar os testes"
-          exit 1
+          mkdir -p report
+          echo ">>> Executando teste de carga K6"
+          if k6 run --out json=report/result.json teste-esteira.js; then
+            echo "✅ Teste K6 executado com sucesso"
+          else
+            echo "❌ Falha na execução do K6"
+            exit 1
+          fi
 
-      - name: Upload Robot Framework reports
+      - name: Upload K6 report
         if: always()
         uses: actions/upload-artifact@v4
-        with:
-          name: robot-framework-reports
-          path: |
-            log.html
-            report.html
-            output.xml
+        with: 
+          name: Relatório de Teste de Performance
+          path: report
