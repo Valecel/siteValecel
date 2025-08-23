@@ -36,13 +36,6 @@ jobs:
           sudo apt update
           sudo apt install -y microsoft-edge-stable
 
-      - name: Install EdgeDriver
-        run: |
-          EDGE_VERSION=$(microsoft-edge --version | grep -oP '\d+\.\d+\.\d+\.\d+')
-          wget -O edgedriver.zip https://msedgedriver.azureedge.net/${EDGE_VERSION}/edgedriver_linux64.zip
-          unzip edgedriver.zip -d $HOME/.local/bin
-          export PATH=$HOME/.local/bin:$PATH
-
       - name: Run Robot Framework tests
         run: |
           robot cenariosDeTestes/suites/validarMenuseItensDaPagina.robot
