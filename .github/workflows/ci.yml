@@ -34,8 +34,7 @@ jobs:
         run: sudo apt-get install -y jq
       - name: Remove chromedriver antigo
         run: sudo rm -f /usr/local/bin/chromedriver
-      - name: Instala Google Chrome
-      - name: Instala edgedl
+      - name: Instala edge
         run: |
           wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
           sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
