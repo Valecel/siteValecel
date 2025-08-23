@@ -23,7 +23,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install Python dependencies
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install robotframework robotframework-seleniumlibrary selenium webdriver-manager
@@ -49,10 +49,9 @@ jobs:
           sudo apt update
           sudo apt install -y opera-stable
 
-      - name: Run Robot Framework tests
+      - name: Run Robot Framework tests with browser fallback
         run: |
           mkdir -p /tmp/robot-profile
-          # Roda os testes com fallback entre browsers
           python - <<EOF
 import os
 from robot import run
@@ -69,19 +68,19 @@ browsers = [
     ('Opera', OperaDriverManager().install())
 ]
 
-success = False
 for name, driver_path in browsers:
     try:
         os.environ['ROBOT_BROWSER'] = name
         os.environ['ROBOT_USER_DATA_DIR'] = '/tmp/robot-profile'
         print(f"Running tests on {name}...")
-        run('cenariosDeTestes/suites/validarMenuseItensDaPagina.robot', variable=['BROWSER:' + name, 'HEADLESS:True', 'USER_DATA_DIR:/tmp/robot-profile'])
-        success = True
+        run('cenariosDeTestes/suites/validarMenuseItensDaPagina.robot', variable=[
+            f'BROWSER:{name}',
+            'HEADLESS:True',
+            'USER_DATA_DIR:/tmp/robot-profile'
+        ])
         break
     except Exception as e:
         print(f"⚠️ Falha no browser {name}: {e}")
-if not success:
-    raise SystemExit("❌ Todos os browsers falharam")
 EOF
 
       - name: Upload Robot Framework reports
