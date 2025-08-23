@@ -1,6 +1,6 @@
 *** Settings ***
 Library    SeleniumLibrary
-Suite Setup    Open Browser    https://sitevalecel.valecelinfo.com.br/index.html    edge    arguments=--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080 --user-data-dir=${EXECDIR}/chrome-profile-${RANDOM}
+Suite Setup    Open Browser    https://sitevalecel.valecelinfo.com.br/index.html    edge    arguments=--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080 --user-data-dir=/tmp/chrome-profile
 Suite Teardown    Close Browser
 
 *** Variables ***
