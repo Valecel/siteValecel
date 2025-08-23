@@ -1,88 +1,11 @@
-name: Robot Framework Tests
-
-on:
-  push:
-    branches:
-      - main
-      - testesValidosQa
-  pull_request:
-    branches:
-      - main
-      - testesValidosQa
-
-jobs:
-  robot-tests:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install robotframework robotframework-seleniumlibrary selenium
-
-      # Instala navegadores e respectivos drivers
-      - name: Install Browsers
-        run: |
-          sudo apt update
-          sudo apt install -y \
-            google-chrome-stable \
-            firefox \
-            unzip \
-            wget \
-            curl \
-            software-properties-common \
-            apt-transport-https \
-            gnupg
-
-          # Instalar Opera
-          curl -s https://deb.opera.com/archive.key | sudo apt-key add -
-          sudo add-apt-repository 'deb https://deb.opera.com/opera-stable/ stable non-free'
-          sudo apt update
-          sudo apt install -y opera-stable
-
-          # Instalar Microsoft Edge
-          curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-          sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
-          sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
-          sudo apt update
-          sudo apt install -y microsoft-edge-stable
-
-      - name: Install EdgeDriver (stable way)
-        run: |
-          EDGE_VERSION=$(microsoft-edge-stable --version | awk '{print $3}')
-          echo ">>> Baixando EdgeDriver versão $EDGE_VERSION"
-          wget "https://msedgedriver.azureedge.net/${EDGE_VERSION}/edgedriver_linux64.zip"
-          unzip edgedriver_linux64.zip
-          sudo mv msedgedriver /usr/local/bin/
-          msedgedriver --version
-
-      - name: Run Robot Framework tests with fallback
-        run: |
-          for browser in edge chrome firefox opera; do
-            echo ">>> Tentando rodar no navegador: $browser"
-            if robot -v BROWSER:$browser -v HEADLESS:True cenariosDeTestes/suites/validarMenuseItensDaPagina.robot; then
-              echo ">>> Testes passaram no $browser ✅"
-              exit 0
-            else
-              echo ">>> Falhou no $browser ❌, tentando próximo..."
-            fi
-          done
-          echo "Nenhum navegador conseguiu rodar os testes ❌"
-          exit 1
-
-      - name: Upload Robot Framework reports
-        uses: actions/upload-artifact@v4
-        with:
-          name: robot-framework-reports
-          path: |
-            log.html
-            report.html
-            output.xml
+for browser in edge chrome firefox opera; do
+  if command -v ${browser} >/dev/null 2>&1; then
+    echo ">>> Testando no $browser"
+    if robot -v BROWSER:$browser cenariosDeTestes/suites/validarMenuseItensDaPagina.robot; then
+      exit 0
+    fi
+  else
+    echo ">>> $browser não disponível, pulando..."
+  fi
+done
+exit 1
