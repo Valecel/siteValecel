@@ -1,60 +1,94 @@
-name: Teste de Performance K6
+name: Robot Framework Tests
 
 on:
   push:
     branches:
-      - main  # Substitua 'main' pelo nome da sua branch principal, se necessário
+      - main
+      - testesValidosQa
   pull_request:
     branches:
       - main
+      - testesValidosQa
 
 jobs:
-  performance-tests:
-    name: Teste de Performance K6
+  robot-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      - name: Install Node.js
-        uses: actions/setup-node@v5
-        with:
-          node-version: '16'
-
       - name: Install Python dependencies
         run: |
           python -m pip install --upgrade pip
-          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+          pip install robotframework robotframework-seleniumlibrary selenium webdriver-manager
 
-      - name: Install k6
+      - name: Install Browsers
         run: |
-          echo ">>> Instalando k6"
-          sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69 || echo "Key já adicionada"
-          sudo apt-add-repository "deb https://dl.k6.io/deb stable main" || echo "Repository já adicionada"
-          sudo apt-get update
-          sudo apt-get install -y k6
+          # Microsoft Edge
+          curl -s https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+          sudo install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/
+          sudo sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft.gpg] https://packages.microsoft.com/repos/edge stable main" > /etc/apt/sources.list.d/microsoft-edge.list'
+          sudo apt update
+          sudo apt install -y microsoft-edge-stable
+          # Google Chrome
+          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list'
+          sudo apt update
+          sudo apt install -y google-chrome-stable
+          # Firefox
+          sudo apt install -y firefox
+          # Opera
+          sudo add-apt-repository -y 'deb https://deb.opera.com/opera-stable/ stable non-free'
+          wget -qO - https://deb.opera.com/archive.key | sudo apt-key add -
+          sudo apt update
+          sudo apt install -y opera-stable
 
-      - name: Run K6 performance tests with fallback
+      - name: Run Robot Framework tests
         run: |
-          set -e
-          mkdir -p report
-          echo ">>> Executando teste de carga K6"
-          if k6 run --out json=report/result.json teste-esteira.js; then
-            echo "✅ Teste K6 executado com sucesso"
-          else
-            echo "❌ Falha na execução do K6"
-            exit 1
-          fi
+          mkdir -p /tmp/robot-profile
+          # Roda os testes com fallback entre browsers
+          python - <<EOF
+import os
+from robot import run
+from selenium import webdriver
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.opera import OperaDriverManager
 
-      - name: Upload K6 report
-        if: always()
+browsers = [
+    ('Edge', EdgeChromiumDriverManager().install()),
+    ('Chrome', ChromeDriverManager().install()),
+    ('Firefox', GeckoDriverManager().install()),
+    ('Opera', OperaDriverManager().install())
+]
+
+success = False
+for name, driver_path in browsers:
+    try:
+        os.environ['ROBOT_BROWSER'] = name
+        os.environ['ROBOT_USER_DATA_DIR'] = '/tmp/robot-profile'
+        print(f"Running tests on {name}...")
+        run('cenariosDeTestes/suites/validarMenuseItensDaPagina.robot', variable=['BROWSER:' + name, 'HEADLESS:True', 'USER_DATA_DIR:/tmp/robot-profile'])
+        success = True
+        break
+    except Exception as e:
+        print(f"⚠️ Falha no browser {name}: {e}")
+if not success:
+    raise SystemExit("❌ Todos os browsers falharam")
+EOF
+
+      - name: Upload Robot Framework reports
         uses: actions/upload-artifact@v4
-        with: 
-          name: Relatório de Teste de Performance
-          path: report
+        with:
+          name: robot-framework-reports
+          path: |
+            log.html
+            report.html
+            output.xml
