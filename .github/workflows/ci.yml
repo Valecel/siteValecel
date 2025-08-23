@@ -36,17 +36,11 @@ jobs:
           sudo apt update
           sudo apt install -y microsoft-edge-stable
 
-      - name: Install EdgeDriver
-        run: |
-          EDGE_VERSION=$(microsoft-edge --version | grep -oP '\d+\.\d+\.\d+\.\d+')
-          EDGE_DRIVER_VERSION=$(curl -sS https://msedgedriver.azureedge.net/LATEST_RELEASE_$EDGE_VERSION)
-          wget https://msedgedriver.azureedge.net/$EDGE_DRIVER_VERSION/edgedriver_linux64.zip
-          unzip edgedriver_linux64.zip
-          sudo mv msedgedriver /usr/local/bin/
-          msedgedriver --version
-
       - name: Run Robot Framework tests
+        env:
+          EDGEWEBDRIVER: python -m selenium.webdriver.edge.driver
         run: |
+          python -c "from selenium import webdriver; from webdriver_manager.microsoft import EdgeChromiumDriverManager; driver = webdriver.Edge(EdgeChromiumDriverManager().install()); driver.quit()"
           robot cenariosDeTestes/suites/validarMenuseItensDaPagina.robot
 
       - name: Upload Robot Framework reports
