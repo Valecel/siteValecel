@@ -51,53 +51,25 @@ jobs:
 
       - name: Run Robot Framework tests with browser fallback and retry
         run: |
-          mkdir -p /tmp/robot-profile
-          python - <<EOF
-import os
-import time
-from robot import run
-from selenium import webdriver
-from webdriver_manager.microsoft import EdgeChromiumDriverManager
-from webdriver_manager.chrome import ChromeDriverManager
-from webdriver_manager.firefox import GeckoDriverManager
-from webdriver_manager.opera import OperaDriverManager
-
-def get_driver_with_retry(manager_class, retries=3, delay=5):
-    for attempt in range(1, retries+1):
-        try:
-            return manager_class().install()
-        except Exception as e:
-            print(f"⚠️ Tentativa {attempt} falhou: {e}")
-            time.sleep(delay)
-    raise SystemExit(f"❌ Não foi possível baixar o driver de {manager_class.__name__}")
-
-browsers = [
-    ('Edge', lambda: get_driver_with_retry(EdgeChromiumDriverManager)),
-    ('Chrome', lambda: get_driver_with_retry(ChromeDriverManager)),
-    ('Firefox', lambda: get_driver_with_retry(GeckoDriverManager)),
-    ('Opera', lambda: get_driver_with_retry(OperaDriverManager))
-]
-
-success = False
-for name, driver_func in browsers:
-    try:
-        driver_path = driver_func()
-        os.environ['ROBOT_BROWSER'] = name
-        os.environ['ROBOT_USER_DATA_DIR'] = '/tmp/robot-profile'
-        print(f"Running tests on {name}...")
-        run('cenariosDeTestes/suites/validarMenuseItensDaPagina.robot', variable=[
-            f'BROWSER:{name}',
-            'HEADLESS:True',
-            'USER_DATA_DIR:/tmp/robot-profile'
-        ])
-        success = True
-        break
-    except Exception as e:
-        print(f"⚠️ Falha no browser {name}: {e}")
-if not success:
-    raise SystemExit("❌ Todos os browsers falharam")
-EOF
-
+          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)
+          CHROMEDRIVER_VERSION=$(curl -sS https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json | jq -r --arg ver "$CHROME_VERSION" '.channels.Stable.version')
+          wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip
+          unzip /tmp/chromedriver.zip -d /tmp/
+          sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
+          sudo chmod +x /usr/local/bin/chromedriver
+      - name: Install Google Chrome
+        run: |
+          wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+      - name: Limpa processos antigos do Chrome/Chromedriver
+        run: |
+          pkill -9 chrome || true
+          pkill -9 chromedriver || true
+      - name: Run Robot Framework tests
+        run: |
+          robot cenariosDeTestes/suites/validarMenuseItensDaPagina.robot
       - name: Upload Robot Framework reports
         uses: actions/upload-artifact@v4
         with:
