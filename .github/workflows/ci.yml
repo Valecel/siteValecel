@@ -55,9 +55,12 @@ jobs:
           pkill -9 chrome || true
           pkill -9 chromedriver || true
       - name: Run Robot Framework tests
+        env:
+          ROBOT_SYSLOG_FILE: NONE
         run: |
           export TMPDIR=$(mktemp -d)
-          robot cenariosDeTestes/suites/validarMenuseItensDaPagina.robot
+          export PROFILE_DIR=$(mktemp -d)
+          robot --loglevel DEBUG --variable BROWSER:chrome --variable CHROME_OPTIONS:--headless,--no-sandbox,--disable-dev-shm-usage,--user-data-dir=$PROFILE_DIR cenariosDeTestes/suites/validarMenuseItensDaPagina.robot
       - name: Upload Robot Framework reports
         uses: actions/upload-artifact@v4
         with:
@@ -66,3 +69,4 @@ jobs:
             log.html
             report.html
             output.xml
+            *.png
