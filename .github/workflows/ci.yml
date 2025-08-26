@@ -34,7 +34,8 @@ jobs:
 
       - name: Run Robot Framework tests
         run: |
-          robot -d results cenariosDeTestes/suites/
+          robot --variable BROWSER:chrome --variable OPTIONS:"headless;--no-sandbox;--disable-dev-shm-usage;--disable-gpu;--remote-debugging-port=9222;--user-data-dir=/tmp/chrome-profile" -d results cenariosDeTestes/suites/
+
 
       - name: Upload Robot Framework results
         uses: actions/upload-artifact@v4
