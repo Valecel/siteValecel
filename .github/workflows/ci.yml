@@ -34,8 +34,7 @@ jobs:
 
       - name: Run Robot Framework tests
         run: |
-          # Remove --user-data-dir para evitar conflito de perfil do Chrome no CI
-          robot --variable BROWSER:chrome --variable OPTIONS:"headless;--no-sandbox;--disable-dev-shm-usage;--disable-gpu;--remote-debugging-port=9222" -d results cenariosDeTestes/suites/
+          robot -d results cenariosDeTestes/suites/
 
       - name: Upload Robot Framework results
         uses: actions/upload-artifact@v4
