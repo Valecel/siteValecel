@@ -1,58 +1,43 @@
-name: Robot Framework Tests
+name: Run Robot Tests
 
 on:
   push:
-    branches:
-      - main
-      - testesValidosQa
+    branches: [ main, testesValidosQa ]
   pull_request:
-    branches:
-      - main
-      - testesValidosQa
+    branches: [ main, testesValidosQa ]
 
 jobs:
-  robot-tests:
+  test:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.10"
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install robotframework robotframework-seleniumlibrary selenium chromedriver-autoinstaller
+          pip install robotframework
+          pip install robotframework-seleniumlibrary
+          pip install selenium
+          pip install webdriver-manager
 
-      - name: Instala Google Chrome
+      - name: Install Chrome
         run: |
-          wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-          sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
-      - name: Garante Chromedriver correto para o Chrome
-        run: |
-          python -c "import chromedriver_autoinstaller; chromedriver_autoinstaller.install()"
-
       - name: Run Robot Framework tests
-        env:
-          ROBOT_SYSLOG_FILE: NONE
         run: |
-          set -e
-          export TMPDIR=$(mktemp -d)
-          # Remove --user-data-dir do CHROME_OPTIONS para evitar conflito
-          robot --loglevel DEBUG --variable BROWSER:chrome --variable CHROME_OPTIONS:--headless,--no-sandbox,--disable-dev-shm-usage cenariosDeTestes/suites/validarMenuseItensDaPagina.robot || (cat log.html || true; exit 1)
+          robot -d results tests/
 
-      - name: Upload Robot Framework reports
-        uses: actions/upload-artifact@v4
+      - name: Upload Robot Framework results
+        uses: actions/upload-artifact@v3
         with:
-          name: robot-framework-reports
-          path: |
-            log.html
-            report.html
-            output.xml
-            *.png
+          name: robot-results
+          path: results
