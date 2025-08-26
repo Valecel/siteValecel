@@ -45,12 +45,18 @@ jobs:
           unzip /tmp/chromedriver.zip -d /tmp/
           sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
+      - name: Limpa diretórios temporários do Chrome
+        run: |
+          rm -rf /tmp/.org.chromium.Chromium.*
+          rm -rf /tmp/selenium*
+          rm -rf /tmp/.com.google.Chrome.*
       - name: Limpa processos antigos do Chrome/Chromedriver
         run: |
           pkill -9 chrome || true
           pkill -9 chromedriver || true
       - name: Run Robot Framework tests
         run: |
+          export TMPDIR=$(mktemp -d)
           robot cenariosDeTestes/suites/validarMenuseItensDaPagina.robot
       - name: Upload Robot Framework reports
         uses: actions/upload-artifact@v4
