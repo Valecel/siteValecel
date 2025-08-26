@@ -2,10 +2,9 @@ name: Run Robot Tests
 
 on:
   push:
-    branches: [ main, testesValidosQa ]
-  pull_request:
-    branches: [ main, testesValidosQa ]
-  workflow_dispatch:
+    branches:
+      - main
+      - testesValidosQa
 
 jobs:
   test:
@@ -35,7 +34,7 @@ jobs:
 
       - name: Run Robot Framework tests
         run: |
-          robot -d results tests/
+          robot -d results cenariosDeTestes/suites/
 
       - name: Upload Robot Framework results
         uses: actions/upload-artifact@v4
