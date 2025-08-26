@@ -118,6 +118,12 @@ Ou para rodar todos os testes da pasta:
 robot cenariosDeTestes/suites/
 ```
 
+#### Execução manual por tag (exemplo: tag 'regressivo')
+Se desejar rodar apenas os testes marcados com a tag `regressivo`, utilize:
+```powershell
+robot -i regressivo cenariosDeTestes/suites/
+```
+
 Os relatórios serão gerados em `log.html`, `report.html` e `output.xml` na raiz do projeto ou na pasta `results/`.
 
 ### 7. Dicas para ambiente Windows
