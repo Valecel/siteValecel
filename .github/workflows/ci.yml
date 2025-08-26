@@ -35,7 +35,8 @@ jobs:
 
       - name: Run Robot Framework tests
         run: |
-          robot -d results tests/
+          # Executa todos os arquivos .robot encontrados no repo
+          robot -d results ./*.robot
 
       - name: Upload Robot Framework results
         uses: actions/upload-artifact@v4
