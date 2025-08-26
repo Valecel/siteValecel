@@ -1,3 +1,14 @@
+# Run Robot Tests
+#
+# Execução manual via GitHub Actions:
+# 1. Vá em Actions > Run Robot Tests > Run workflow.
+# 2. (Opcional) Preencha o campo 'tag' para rodar apenas testes marcados (ex: regressivo).
+#    - Deixe em branco para rodar todos os testes.
+#    - Exemplo: Para rodar só os testes com a tag regressivo, preencha: regressivo
+#
+# Execução automática:
+# - O pipeline roda automaticamente em push ou pull request nas branches main e testesValidosQa.
+
 name: Run Robot Tests
 
 on:
