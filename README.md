@@ -76,6 +76,58 @@ Os testes automatizados deste projeto são escritos em Robot Framework, uma ling
 - Caso a estrutura do site mude, os seletores XPath podem precisar de atualização.
 - O pipeline de CI/CD pode ser configurado para rodar os testes automaticamente a cada push.
 
+## Como preparar o ambiente de desenvolvimento e executar os testes
+
+### 1. Instale o Visual Studio Code (VSCode)
+- Baixe em: https://code.visualstudio.com/
+- Recomenda-se instalar a extensão oficial do Robot Framework para VSCode:
+  - Pesquise por "Robot Framework Language Server" no marketplace do VSCode e instale.
+
+### 2. Instale o Python 3
+- Baixe em: https://www.python.org/downloads/
+- Durante a instalação, marque a opção para adicionar o Python ao PATH.
+- Para verificar a instalação, execute no terminal:
+  ```
+  python --version
+  ```
+
+### 3. Instale as dependências do projeto
+Abra o terminal na raiz do projeto e execute:
+```powershell
+python -m pip install --upgrade pip
+pip install robotframework
+pip install robotframework-seleniumlibrary
+pip install selenium
+pip install webdriver-manager
+```
+
+### 4. Instale o Google Chrome
+- Baixe e instale: https://www.google.com/chrome/
+
+### 5. (Opcional) Instale o ChromeDriver manualmente
+- Normalmente o webdriver-manager gerencia o ChromeDriver automaticamente.
+- Se necessário, baixe em: https://chromedriver.chromium.org/downloads
+
+### 6. Execute os testes Robot Framework
+No terminal, execute:
+```powershell
+robot cenariosDeTestes/suites/validarMenuseItensDaPagina.robot
+```
+Ou para rodar todos os testes da pasta:
+```powershell
+robot cenariosDeTestes/suites/
+```
+
+Os relatórios serão gerados em `log.html`, `report.html` e `output.xml` na raiz do projeto ou na pasta `results/`.
+
+### 7. Dicas para ambiente Windows
+- Recomenda-se usar o terminal PowerShell ou o terminal integrado do VSCode.
+- Se houver erro de PATH, reinicie o terminal após instalar Python ou Chrome.
+
+### 8. Execução dos testes via CI/CD (GitHub Actions)
+- O pipeline está configurado para rodar automaticamente em push ou pull request nas branches `main` e `testesValidosQa`.
+- Veja o arquivo `.github/workflows/ci.yml` para detalhes do workflow.
+
 ## Cenários e Testes Automatizados
 
 ### Plano de Teste: Validação de Conteúdo das Páginas do Site ValeCel
