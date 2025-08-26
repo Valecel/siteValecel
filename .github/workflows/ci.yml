@@ -15,7 +15,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: github.event_name != 'workflow_dispatch' || github.event.inputs.tag == ''
+    if: github.event_name != 'workflow_dispatch'
 
     steps:
       - name: Checkout repository
@@ -59,7 +59,7 @@ jobs:
 
   test-by-tag:
     runs-on: ubuntu-latest
-    if: github.event_name == 'workflow_dispatch' && github.event.inputs.tag != ''
+    if: github.event_name == 'workflow_dispatch'
 
     steps:
       - name: Checkout repository
@@ -93,7 +93,11 @@ jobs:
         env:
           DISPLAY: :99
         run: |
-          robot -i ${{ github.event.inputs.tag }} -d results cenariosDeTestes/suites/
+          if [ -z "${{ github.event.inputs.tag }}" ]; then \
+            robot -d results cenariosDeTestes/suites/; \
+          else \
+            robot -i ${{ github.event.inputs.tag }} -d results cenariosDeTestes/suites/; \
+          fi
 
       - name: Upload Robot Framework results
         uses: actions/upload-artifact@v4
