@@ -2,9 +2,7 @@ name: Run Robot Tests
 
 on:
   push:
-    branches:
-      - main
-      - testesValidosQa
+  pull_request:
 
 jobs:
   test:
