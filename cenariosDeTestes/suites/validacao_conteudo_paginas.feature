@@ -35,3 +35,13 @@ Feature: Validação da segunda página
     Given que estou na segunda página
     When a página for carregada
     Then devo visualizar o texto "HostGator"
+
+  Scenario: Verificar presença do texto HostGator na página de produtos
+    Given que estou na página de produtos
+    When a página for carregada
+    Then devo visualizar o texto "HostGator"
+
+  Scenario: Verificar presença do texto HostGator na página de carrinho
+    Given que estou na página de carrinho
+    When a página for carregada
+    Then devo visualizar o texto "HostGator"
