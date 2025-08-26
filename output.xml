@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0 (Python 3.12.6 on win32)" generated="2025-08-26T12:22:07.823964" rpa="false" schemaversion="5">
+<suite id="s1" name="validarMenuseItensDaPagina" source="C:\repositorios de estudos\siteValecel\cenariosDeTestes\suites\validarMenuseItensDaPagina.robot">
+<kw name="Open Browser" owner="SeleniumLibrary" type="SETUP">
+<msg time="2025-08-26T12:22:08.077990" level="INFO">Opening browser 'chrome' to base url 'https://sitevalecel.valecelinfo.com.br/index.html'.</msg>
+<arg>https://sitevalecel.valecelinfo.com.br/index.html</arg>
+<arg>chrome</arg>
+<arg>arguments=--headless --no-sandbox --disable-dev-shm-usage --disable-gpu --window-size=1920,1080</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2025-08-26T12:22:08.076988" elapsed="7.905210"/>
+</kw>
+<test id="s1-t1" name="Validar titulo destaque da semana" line="11">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T12:22:17.989962" level="INFO">Slept 2 seconds.</msg>
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T12:22:15.989729" elapsed="2.000233"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Destaque da Semana</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-26T12:22:17.989962" elapsed="0.394229"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-08-26T12:22:18.393979" level="INFO">Current page contains text 'Destaque da Semana'.</msg>
+<arg>Destaque da Semana</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-08-26T12:22:18.385199" elapsed="0.008780"/>
+</kw>
+<status status="PASS" start="2025-08-26T12:22:15.982198" elapsed="2.412789"/>
+</test>
+<test id="s1-t2" name="Validar nome do produto" line="17">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T12:22:20.396089" level="INFO">Slept 2 seconds.</msg>
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T12:22:18.395987" elapsed="2.000102"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>Iphone 14</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-26T12:22:20.396089" elapsed="0.012046"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-08-26T12:22:20.436725" level="INFO">Current page contains text 'Iphone 14'.</msg>
+<arg>Iphone 14</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-08-26T12:22:20.409143" elapsed="0.027582"/>
+</kw>
+<status status="PASS" start="2025-08-26T12:22:18.395987" elapsed="2.041746"/>
+</test>
+<test id="s1-t3" name="Validar preco do produto" line="23">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T12:22:22.441167" level="INFO">Slept 2 seconds.</msg>
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T12:22:20.440739" elapsed="2.000428"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>R$ 4.300,00</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-26T12:22:22.442184" elapsed="0.025740"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-08-26T12:22:22.496223" level="INFO">Current page contains text 'R$ 4.300,00'.</msg>
+<arg>R$ 4.300,00</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-08-26T12:22:22.469914" elapsed="0.026309"/>
+</kw>
+<status status="PASS" start="2025-08-26T12:22:20.439739" elapsed="2.057572"/>
+</test>
+<test id="s1-t4" name="Validar botao Comprar" line="29">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T12:22:24.501742" level="INFO">Slept 2 seconds.</msg>
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T12:22:22.501310" elapsed="2.000432"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-08-26T12:22:24.502748" level="INFO">Executing JavaScript:
+window.scrollTo(0, document.body.scrollHeight)
+Without any arguments.</msg>
+<arg>window.scrollTo(0, document.body.scrollHeight)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-08-26T12:22:24.501742" elapsed="0.008037"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>xpath=/html/body/div[4]/div/div[1]/div/button</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T12:22:24.510778" elapsed="0.135757"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-08-26T12:22:24.703275" level="INFO">Element 'xpath=/html/body/div[4]/div/div[1]/div/button' is displayed.</msg>
+<arg>xpath=/html/body/div[4]/div/div[1]/div/button</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T12:22:24.650547" elapsed="0.052728"/>
+</kw>
+<status status="PASS" start="2025-08-26T12:22:22.500313" elapsed="2.204970"/>
+</test>
+<test id="s1-t5" name="Validar imagem do produto" line="36">
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T12:22:29.707264" level="INFO">Slept 5 seconds.</msg>
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T12:22:24.706786" elapsed="5.000478"/>
+</kw>
+<kw name="Execute Javascript" owner="SeleniumLibrary">
+<msg time="2025-08-26T12:22:29.709464" level="INFO">Executing JavaScript:
+window.scrollTo(0, document.body.scrollHeight)
+Without any arguments.</msg>
+<arg>window.scrollTo(0, document.body.scrollHeight)</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<status status="PASS" start="2025-08-26T12:22:29.708419" elapsed="0.014115"/>
+</kw>
+<kw name="Wait Until Element Is Visible" owner="SeleniumLibrary">
+<arg>//img[contains(@src, 'imagem')]</arg>
+<arg>10s</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T12:22:29.723545" elapsed="0.032752"/>
+</kw>
+<kw name="Element Should Be Visible" owner="SeleniumLibrary">
+<msg time="2025-08-26T12:22:29.796562" level="INFO">Element '//img[contains(@src, 'imagem')]' is displayed.</msg>
+<arg>//img[contains(@src, 'imagem')]</arg>
+<doc>Verifies that the element identified by ``locator`` is visible.</doc>
+<status status="PASS" start="2025-08-26T12:22:29.757311" elapsed="0.039251"/>
+</kw>
+<kw name="Capture Page Screenshot" owner="SeleniumLibrary">
+<msg time="2025-08-26T12:22:29.910309" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-4.png"&gt;&lt;img src="selenium-screenshot-4.png" width="800px"&gt;&lt;/a&gt;</msg>
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<status status="PASS" start="2025-08-26T12:22:29.797691" elapsed="0.112618"/>
+</kw>
+<kw name="Log" owner="BuiltIn">
+<msg time="2025-08-26T12:22:29.910309" level="INFO">Screenshot salvo: C:\repositorios de estudos\siteValecel/selenium-screenshot-1.png</msg>
+<arg>Screenshot salvo: ${OUTPUT DIR}/selenium-screenshot-1.png</arg>
+<doc>Logs the given message with the given level.</doc>
+<status status="PASS" start="2025-08-26T12:22:29.910309" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-08-26T12:22:24.706282" elapsed="5.205027"/>
+</test>
+<test id="s1-t6" name="Validar texto HostGator na segunda pagina" line="45">
+<kw name="Go To" owner="SeleniumLibrary">
+<msg time="2025-08-26T12:22:29.911309" level="INFO">Opening url 'https://www.hostgator.com.br/'</msg>
+<arg>https://www.hostgator.com.br/</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<status status="PASS" start="2025-08-26T12:22:29.911309" elapsed="0.897680"/>
+</kw>
+<kw name="Sleep" owner="BuiltIn">
+<msg time="2025-08-26T12:22:32.819070" level="INFO">Slept 2 seconds.</msg>
+<arg>${DELAY}</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" start="2025-08-26T12:22:30.819030" elapsed="2.000040"/>
+</kw>
+<kw name="Wait Until Page Contains" owner="SeleniumLibrary">
+<arg>HostGator</arg>
+<doc>Waits until ``text`` appears on the current page.</doc>
+<status status="PASS" start="2025-08-26T12:22:32.820581" elapsed="1.820200"/>
+</kw>
+<kw name="Page Should Contain" owner="SeleniumLibrary">
+<msg time="2025-08-26T12:22:34.654389" level="INFO">Current page contains text 'HostGator'.</msg>
+<arg>HostGator</arg>
+<doc>Verifies that current page contains ``text``.</doc>
+<status status="PASS" start="2025-08-26T12:22:34.640781" elapsed="0.013608"/>
+</kw>
+<status status="PASS" start="2025-08-26T12:22:29.911309" elapsed="4.744177"/>
+</test>
+<kw name="Close Browser" owner="SeleniumLibrary" type="TEARDOWN">
+<doc>Closes the current browser.</doc>
+<status status="PASS" start="2025-08-26T12:22:34.655486" elapsed="2.776046"/>
+</kw>
+<status status="PASS" start="2025-08-26T12:22:07.824946" elapsed="29.606586"/>
+</suite>
+<statistics>
+<total>
+<stat pass="6" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="6" fail="0" skip="0" id="s1" name="validarMenuseItensDaPagina">validarMenuseItensDaPagina</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
