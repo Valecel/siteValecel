@@ -5,7 +5,7 @@ on:
     branches: [ main, testesValidosQa ]
   pull_request:
     branches: [ main, testesValidosQa ]
-  workflow_dispatch:   # permite rodar manualmente no Actions
+  workflow_dispatch:
 
 jobs:
   test:
@@ -35,8 +35,7 @@ jobs:
 
       - name: Run Robot Framework tests
         run: |
-          # Executa todos os arquivos .robot encontrados no repo
-          robot -d results ./*.robot
+          robot -d results tests/
 
       - name: Upload Robot Framework results
         uses: actions/upload-artifact@v4
