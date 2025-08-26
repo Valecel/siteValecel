@@ -20,50 +20,24 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.13'
+          python-version: '3.11'
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install robotframework robotframework-seleniumlibrary selenium chromedriver-autoinstaller
 
-      - name: Garante Chromedriver correto para o Chrome
-        run: |
-          python -c "import chromedriver_autoinstaller; chromedriver_autoinstaller.install()"
-
-      - name: Instala jq
-        run: sudo apt-get install -y jq
-      - name: Remove chromedriver antigo
-        run: sudo rm -f /usr/local/bin/chromedriver
       - name: Instala Google Chrome
         run: |
           wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
           sudo sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
-      - name: Instala Chromedriver compatível
+
+      - name: Garante Chromedriver correto para o Chrome
         run: |
-          CHROME_VERSION=$(google-chrome --version | grep -oP '\d+\.\d+\.\d+' | head -1)
-          CHROMEDRIVER_VERSION=$(curl -sS https://googlechromelabs.github.io/chrome-for-testing/last-known-good-versions-with-downloads.json | jq -r --arg ver "$CHROME_VERSION" '.channels.Stable.version')
-          wget -O /tmp/chromedriver.zip https://edgedl.me.gvt1.com/edgedl/chrome/chrome-for-testing/${CHROMEDRIVER_VERSION}/linux64/chromedriver-linux64.zip
-          unzip /tmp/chromedriver.zip -d /tmp/
-          sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
-          sudo chmod +x /usr/local/bin/chromedriver
-      - name: Verifica versões do Chrome e Chromedriver
-        run: |
-          google-chrome --version
-          chromedriver --version
-      - name: Garante permissão de execução do Chromedriver
-        run: sudo chmod +x /usr/local/bin/chromedriver
-      - name: Limpa diretórios temporários do Chrome
-        run: |
-          rm -rf /tmp/.org.chromium.Chromium.*
-          rm -rf /tmp/selenium*
-          rm -rf /tmp/.com.google.Chrome.*
-      - name: Limpa processos antigos do Chrome/Chromedriver
-        run: |
-          pkill -9 chrome || true
-          pkill -9 chromedriver || true
+          python -c "import chromedriver_autoinstaller; chromedriver_autoinstaller.install()"
+
       - name: Run Robot Framework tests
         env:
           ROBOT_SYSLOG_FILE: NONE
@@ -72,6 +46,7 @@ jobs:
           export TMPDIR=$(mktemp -d)
           export PROFILE_DIR=$(mktemp -d)
           robot --loglevel DEBUG --variable BROWSER:chrome --variable CHROME_OPTIONS:--headless,--no-sandbox,--disable-dev-shm-usage,--user-data-dir=$PROFILE_DIR cenariosDeTestes/suites/validarMenuseItensDaPagina.robot || (cat log.html || true; exit 1)
+
       - name: Upload Robot Framework reports
         uses: actions/upload-artifact@v4
         with:
