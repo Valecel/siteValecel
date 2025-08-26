@@ -45,6 +45,12 @@ jobs:
           unzip /tmp/chromedriver.zip -d /tmp/
           sudo mv /tmp/chromedriver-linux64/chromedriver /usr/local/bin/chromedriver
           sudo chmod +x /usr/local/bin/chromedriver
+      - name: Verifica versões do Chrome e Chromedriver
+        run: |
+          google-chrome --version
+          chromedriver --version
+      - name: Garante permissão de execução do Chromedriver
+        run: sudo chmod +x /usr/local/bin/chromedriver
       - name: Limpa diretórios temporários do Chrome
         run: |
           rm -rf /tmp/.org.chromium.Chromium.*
@@ -58,9 +64,10 @@ jobs:
         env:
           ROBOT_SYSLOG_FILE: NONE
         run: |
+          set -e
           export TMPDIR=$(mktemp -d)
           export PROFILE_DIR=$(mktemp -d)
-          robot --loglevel DEBUG --variable BROWSER:chrome --variable CHROME_OPTIONS:--headless,--no-sandbox,--disable-dev-shm-usage,--user-data-dir=$PROFILE_DIR cenariosDeTestes/suites/validarMenuseItensDaPagina.robot
+          robot --loglevel DEBUG --variable BROWSER:chrome --variable CHROME_OPTIONS:--headless,--no-sandbox,--disable-dev-shm-usage,--user-data-dir=$PROFILE_DIR cenariosDeTestes/suites/validarMenuseItensDaPagina.robot || (cat log.html || true; exit 1)
       - name: Upload Robot Framework reports
         uses: actions/upload-artifact@v4
         with:
