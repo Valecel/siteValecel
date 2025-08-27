@@ -16,6 +16,7 @@ on:
     branches:
       - main
       - testesValidosQa
+      - homologacao
   workflow_dispatch:
     inputs:
       tag:
