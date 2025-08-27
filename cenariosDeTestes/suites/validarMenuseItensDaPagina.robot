@@ -46,10 +46,18 @@ Validar imagem do produto
     Capture Page Screenshot
     Log    Screenshot salvo: ${OUTPUT DIR}/selenium-screenshot-1.png
 
-# Cenário 6: Validar a presença do texto "HostGator" na segunda página
-Validar texto HostGator na segunda pagina
-    [Tags]    regressivo
-    Go To    https://www.hostgator.com.br/
+# Cenário 6: Validar a presença do texto "HostGator" na página Carrinho
+Validar texto HostGator na pagina carrinho
+    [Tags]    carrinho
+    Go To    https://sitevalecel.valecelinfo.com.br/carrinho.html
+    Sleep    ${DELAY}
+    Wait Until Page Contains    HostGator
+    Page Should Contain    HostGator
+
+# Cenário 7: Validar a presença do texto "HostGator" na página Produtos
+Validar texto HostGator na pagina produtos
+    [Tags]    produtos
+    Go To    https://sitevalecel.valecelinfo.com.br/produtos.html
     Sleep    ${DELAY}
     Wait Until Page Contains    HostGator
     Page Should Contain    HostGator

@@ -29,9 +29,12 @@ Feature: Validação da primeira página
     When a página for carregada
     Then devo visualizar a imagem do produto
 
-Feature: Validação da segunda página
+  Scenario: Verificar presença do texto HostGator
+    Given a página carrinho é acessada
+    When a página for carregada
+    Then deve visualizar o texto "HostGator"
 
   Scenario: Verificar presença do texto HostGator
-    Given que estou na segunda página
+    Given a página Produtos é acessada
     When a página for carregada
-    Then devo visualizar o texto "HostGator"
+    Then deve visualizar o texto "HostGator"
