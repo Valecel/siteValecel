@@ -61,3 +61,4 @@ Validar texto HostGator na pagina produtos
     Sleep    ${DELAY}
     Wait Until Page Contains    HostGator
     Page Should Contain    HostGator
+    

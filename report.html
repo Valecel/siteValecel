@@ -5,7 +5,7 @@
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="-1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta content="Robot Framework 7.0 (Python 3.12.6 on win32)" name="Generator">
+<meta content="Robot Framework 7.3.2 (Python 3.13.5 on win32)" name="Generator">
 <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKcAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAAqAAAAAAAAAAAAAAAAAAAALIAAAD/AAAA4AAAANwAAADcAAAA3AAAANwAAADcAAAA3AAAANwAAADcAAAA4AAAAP8AAACxAAAAAAAAAKYAAAD/AAAAuwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC/AAAA/wAAAKkAAAD6AAAAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN8AAAD/AAAA+gAAAMMAAAAAAAAAAgAAAGsAAABrAAAAawAAAGsAAABrAAAAawAAAGsAAABrAAAADAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAIsAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAANEAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAAAAAAAAMgAAADIAAAAyAAAAMgAAADIAAAAyAAAAMgAAADIAAAAFAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAADwAAAB8AAAAAAAAAGAAAABcAAAAAAAAAH8AAABKAAAAAAAAAAAAAAAAAAAA2gAAAP8AAAD6AAAAwwAAAAAAAADCAAAA/wAAACkAAADqAAAA4QAAAAAAAAD7AAAA/wAAALAAAAAGAAAAAAAAANoAAAD/AAAA+gAAAMMAAAAAAAAAIwAAAP4AAAD/AAAA/wAAAGAAAAAAAAAAAAAAAMkAAAD/AAAAigAAAAAAAADaAAAA/wAAAPoAAADDAAAAAAAAAAAAAAAIAAAAcAAAABkAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAAAAAAAAAA2gAAAP8AAAD7AAAAywAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAN4AAAD/AAAAqwAAAP8AAACvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALIAAAD/AAAAsgAAAAAAAAC5AAAA/wAAAMoAAADAAAAAwAAAAMAAAADAAAAAwAAAAMAAAADAAAAAwAAAAMkAAAD/AAAAvAAAAAAAAAAAAAAAAAAAAKwAAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAA/wAAAP8AAAD/AAAArQAAAAAAAAAAwAMAAIABAAAf+AAAP/wAAD/8AAAgBAAAP/wAAD/8AAA//AAAJIwAADHEAAA//AAAP/wAAB/4AACAAQAAwAMAAA==">
 <style media="all">
 :root {
@@ -1068,58 +1068,48 @@ window.stats = (function () {
             });
     }
     function calculatePercents(total, passed, failed, skipped) {
-        if (total == 0) {
+        if (total == 0)
             return [0.0, 0.0, 0.0];
-        }
         var pass = 100.0 * passed / total;
         var skip = 100.0 * skipped / total;
         var fail = 100.0 * failed / total;
         if (pass > 0 && pass < 0.1)
-            pass = 0.1
+            pass = 0.1;
         if (fail > 0 && fail < 0.1)
-            fail = 0.1
+            fail = 0.1;
         if (skip > 0 && skip < 0.1)
-            skip = 0.1
+            skip = 0.1;
         if (pass > 99.95 && pass < 100)
-            pass = 99.9
+            pass = 99.9;
         if (fail > 99.95 && fail < 100)
-            fail = 99.9
+            fail = 99.9;
         if (skip > 99.95 && skip < 100)
-            skip = 99.9
-        return [Math.round(pass*10)/10, Math.round(skip*10)/10, Math.round(fail*10)/10];
+            skip = 99.9;
+        return [round1(pass), round1(skip), round1(fail)];
     }
     function calculateWidths(num1, num2, num3) {
         if (num1 + num2 + num3 === 0)
             return [0.0, 0.0, 0.0];
         // Make small percentages better visible
         if (num1 > 0 && num1 < 1)
-            num1 = 1
+            num1 = 1.0;
         if (num2 > 0 && num2 < 1)
-            num2 = 1
+            num2 = 1.0;
         if (num3 > 0 && num3 < 1)
-            num3 = 1
+            num3 = 1.0;
         // Handle situation where some are rounded up
         while (num1 + num2 + num3 > 100) {
-            if (num1 > num2 && num1 > num3)
-                num1 -= 0.1;
-            else if (num2 > num1 && num2 > num3)
-                num2 -= 0.1;
-            else if (num3 > num1 && num3 > num2)
-                num3 -= 0.1;
-            else if (num1 > num3 && num1 == num2) {
-                num1 -= 0.1;
-                num2 -= 0.1;
-            }
-            else if (num1 > num2 && num1 == num3) {
-                num1 -= 0.1;
-                num3 -= 0.1;
-            }
-            else if (num2 > num1 && num2 == num3) {
-                num2 -= 0.1;
-                num3 -= 0.1;
-            }
+            if (num1 >= num2 && num1 >= num3)
+                num1 = round1(num1 - 0.1);
+            else if (num2 >= num1 && num2 >= num3)
+                num2 = round1(num2 - 0.1);
+            else
+                num3 = round1(num3 - 0.1);
         }
-        return [Math.ceil(num1*10)/10, Math.ceil(num2*10)/10, Math.ceil(num3*10)/10];
+        return [num1, num2, num3];
+    }
+    function round1(num) {
+        return Math.round(num*10) / 10;
     }
     return {
         Statistics: Statistics
@@ -1338,7 +1328,7 @@ window.testdata = function () {
     var STATUSES = ['FAIL', 'PASS', 'SKIP', 'NOT RUN'];
     var KEYWORD_TYPES = ['KEYWORD', 'SETUP', 'TEARDOWN', 'FOR', 'ITERATION', 'IF',
                          'ELSE IF', 'ELSE', 'RETURN', 'VAR', 'TRY', 'EXCEPT', 'FINALLY',
-                         'WHILE', 'CONTINUE', 'BREAK', 'ERROR'];
+                         'WHILE', 'GROUP', 'CONTINUE', 'BREAK', 'ERROR'];
     function addElement(elem) {
         if (!elem.id)
             elem.id = uniqueId();
@@ -1897,22 +1887,22 @@ storage = function () {
 window.output = {};
 </script>
 <script type="text/javascript">
-window.output["suite"] = [1,2,3,0,[],[1,0,29607],[],[[4,0,0,[],[1,8157,2413],[]],[5,0,0,[],[1,10571,2042],[]],[6,0,0,[],[1,12615,2058],[]],[7,0,0,[],[1,14675,2205],[]],[8,0,0,[],[1,16881,5205],[]],[9,0,0,[],[1,22086,4744],[]]],[],[6,6,0,0]];
+window.output["suite"] = [1,2,3,0,[],[1,0,27206],[[4,5,6,0,[],[1,51,27153],[],[[7,0,0,[8],[1,5471,2110],[]],[9,0,0,[8],[1,7583,2035],[]],[10,0,0,[8],[1,9619,2039],[]],[11,0,0,[8],[1,11658,2204],[]],[12,0,0,[8],[1,13865,5219],[]],[13,0,0,[14],[1,19085,3068],[]],[15,0,0,[16],[1,22154,2223],[]]],[],[7,7,0,0]]],[],[],[7,7,0,0]];
 </script>
 <script type="text/javascript">
 window.output["strings"] = [];
 </script>
 <script type="text/javascript">
-window.output["strings"] = window.output["strings"].concat(["*","*validarMenuseItensDaPagina","*C:\\repositorios de estudos\\siteValecel\\cenariosDeTestes\\suites\\validarMenuseItensDaPagina.robot","*cenariosDeTestes/suites/validarMenuseItensDaPagina.robot","*Validar titulo destaque da semana","*Validar nome do produto","*Validar preco do produto","*Validar botao Comprar","*Validar imagem do produto","*Validar texto HostGator na segunda pagina"]);
+window.output["strings"] = window.output["strings"].concat(["*","*Suites","*C:\\repo Uninter\\siteValecel\\cenariosDeTestes\\suites","*cenariosDeTestes/suites","*validarMenuseItensDaPagina","*C:\\repo Uninter\\siteValecel\\cenariosDeTestes\\suites\\validarMenuseItensDaPagina.robot","*cenariosDeTestes/suites/validarMenuseItensDaPagina.robot","*Validar titulo destaque da semana","*regressivo","*Validar nome do produto","*Validar preco do produto","*Validar botao Comprar","*Validar imagem do produto","*Validar texto HostGator na pagina carrinho","*carrinho","*Validar texto HostGator na pagina produtos","*produtos"]);
 </script>
 <script type="text/javascript">
-window.output["stats"] = [[{"elapsed":"00:00:19","fail":0,"label":"All Tests","pass":6,"skip":0}],[],[{"elapsed":"00:00:30","fail":0,"id":"s1","label":"validarMenuseItensDaPagina","name":"validarMenuseItensDaPagina","pass":6,"skip":0}]];
+window.output["stats"] = [[{"elapsed":"00:00:19","fail":0,"label":"All Tests","pass":7,"skip":0}],[{"elapsed":"00:00:03","fail":0,"label":"carrinho","pass":1,"skip":0},{"elapsed":"00:00:02","fail":0,"label":"produtos","pass":1,"skip":0},{"elapsed":"00:00:14","fail":0,"label":"regressivo","pass":5,"skip":0}],[{"elapsed":"00:00:27","fail":0,"id":"s1","label":"Suites","name":"Suites","pass":7,"skip":0},{"elapsed":"00:00:27","fail":0,"id":"s1-s1","label":"Suites.validarMenuseItensDaPagina","name":"validarMenuseItensDaPagina","pass":7,"skip":0}]];
 </script>
 <script type="text/javascript">
-window.output["baseMillis"] = 1756221727825;
+window.output["baseMillis"] = 1756423392796;
 </script>
 <script type="text/javascript">
-window.output["generated"] = 29646;
+window.output["generated"] = 27240;
 </script>
 <script type="text/javascript">
 window.output["expand_keywords"] = null;
@@ -2364,7 +2354,7 @@ function hideHiddenDetailsColumns(elem) {
 
 <script type="text/x-jquery-tmpl" id="tagStatisticsRowTemplate">
   <tr onclick="tagDetailSelected('${label}')" class="row-${$item.index}">
-    <td class="stats-col-name" title="{{html doc}}">
+    <td class="stats-col-name" title="${doc}">
       <div class="stat-name">
         <a href="#tags?${label}">{{html label}}</a>
         {{if info}}(${info}){{/if}}
