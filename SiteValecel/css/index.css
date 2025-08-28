@@ -1,3 +1,7 @@
+body {
+    margin: 0;
+}
+
 :root {
     --primary-color: #748CAB;
     --secundary-color: #F0EBD8;
@@ -135,15 +139,14 @@ body {
     color: color-mix(in srgb, var(--secundary-color) 47%, transparent);
 }
 
-.btnDefault {
+.btn_submit {
     padding: .6em 4em;
     background-color: var(--secundary-color);
     border: none;
     border-radius: var(--border-radius);
     font-weight: 300;
-    font-family: poppins;
+    font-family: "Poppins", sans-serif;
     cursor: pointer;
-    color: var(--background-color);
     transition: all .2s ease-in-out;
 }
 
@@ -177,4 +180,23 @@ body {
 
 .footer img {
     display: none;
+}
+.btn {
+    display: flex;
+    justify-content: center;
+}
+.span-required {
+  display: none;
+  color: red; /* opcional, só pra destacar */
+  font-size: 0.9em;}
+
+.error {
+    color: red;
+    font-size: 0.9em;
+    margin-top: 0.5em;
+    display: none; /* Esconde a mensagem de erro por padrão */
+}
+button:disabled {
+    background-color: #ccc; /* Cor de fundo para o botão desabilitado */
+    cursor: not-allowed; /* Cursor indicando que o botão não pode ser clicado */
 }
