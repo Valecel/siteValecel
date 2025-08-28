@@ -1,23 +1,38 @@
-on: push
 name: 🚀 Deploy website on push
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
 jobs:
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
-      uses: actions/checkout@v4
-    
-    - name: 📂 Sync files
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ${{ secrets.ftp_host }}
-        username: ${{ secrets.ftp_user }}
-        password: ${{ secrets.ftp_password }}
-        server-dir: /sitevalecel.valecelinfo.com.br/   
-        exclude: |
-          */.git
-          */.github/*
-          **/README.md
-          **/LICENSE
-        
+      - name: 🚚 Get latest code
+        uses: actions/checkout@v4
+
+      - name: 📂 Sync files
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.ftp_host }}
+          username: ${{ secrets.ftp_user }}
+          password: ${{ secrets.ftp_password }}
+          protocol: ftps
+          port: 21
+
+          # publica na RAIZ do subdomínio
+          server-dir: ./
+          local-dir: ./      # raiz do repo; 
+          timeout: 60000
+          exclude: |
+            **/.git/**                # nunca enviar a pasta .git/
+            **/.github/**
+            **/node_modules/**
+            **/.ftp-deploy-sync-state.json
+            **/.DS_Store
+            .gitattributes
+            .gitignore
+            README.md
+            LICENSE
